@@ -1,10 +1,9 @@
-import { SpotlightCard } from "@/components/ui/spotlight-card";
+import { SpotlightCard } from "@/components/navyaui/SpotlightCard";
 import { PageHeader, FadeInSection, SlideInSection } from "@/components/PageAnimations";
 import CodeBlock from "@/components/CodeBlock";
 
 const SOURCE_CODE = `"use client";
 import React, { useRef, useState } from "react";
-import { cn } from "@/lib/utils";
 
 export const SpotlightCard = ({
     children,
@@ -31,10 +30,7 @@ export const SpotlightCard = ({
             onMouseMove={handleMouseMove}
             onMouseEnter={() => setOpacity(1)}
             onMouseLeave={() => setOpacity(0)}
-            className={cn(
-                "relative overflow-hidden rounded-xl border border-border bg-card p-8",
-                className
-            )}
+            className={\`relative overflow-hidden rounded-xl border border-border bg-card p-8 \${className || ""}\`.trim()}
         >
             <div
                 className="pointer-events-none absolute -inset-px opacity-0 transition-opacity duration-500"
@@ -46,7 +42,8 @@ export const SpotlightCard = ({
             {children}
         </div>
     );
-};`;
+};
+`;
 
 export default function SpotlightCardPage() {
     return (
@@ -96,7 +93,7 @@ export default function SpotlightCardPage() {
                         </div>
                         <div className="flex-1 min-w-0 pb-2">
                             <p className="text-sm font-medium text-foreground mb-3">Install dependencies</p>
-                            <CodeBlock code="npm install framer-motion clsx tailwind-merge" language="bash" filename="Terminal" />
+                            <CodeBlock code="npm install framer-motion " language="bash" filename="Terminal" />
                         </div>
                     </div>
 
@@ -124,14 +121,14 @@ export function cn(...inputs: ClassValue[]) {
                     {/* Step 3 */}
                     <div className="flex gap-4">
                         <div className="flex flex-col items-center">
-                            <div className="flex items-center justify-center w-7 h-7 rounded-full bg-foreground text-background text-xs font-bold shrink-0">3</div>
+                            <div className="flex items-center justify-center w-7 h-7 rounded-full bg-foreground text-background text-xs font-bold shrink-0">2</div>
                         </div>
                         <div className="flex-1 min-w-0">
                             <p className="text-sm font-medium text-foreground mb-1">Copy the source code</p>
                             <p className="text-xs text-muted-foreground mb-3">
-                                Copy the code below and paste it into <code className="text-xs bg-secondary/60 px-1.5 py-0.5 rounded font-mono text-foreground">components/ui/spotlight-card.tsx</code>
+                                Copy the code below and paste it into <code className="text-xs bg-secondary/60 px-1.5 py-0.5 rounded font-mono text-foreground">components/navyaui/SpotlightCard.tsx</code>
                             </p>
-                            <CodeBlock code={SOURCE_CODE} language="tsx" filename="components/ui/spotlight-card.tsx" collapsible defaultCollapsed />
+                            <CodeBlock code={SOURCE_CODE} language="tsx" filename="components/navyaui/SpotlightCard.tsx" collapsible defaultCollapsed />
                         </div>
                     </div>
                 </div>
@@ -141,7 +138,7 @@ export function cn(...inputs: ClassValue[]) {
             <SlideInSection direction="right" className="mb-10">
                 <p className="text-[11px] font-semibold text-muted-foreground uppercase tracking-widest mb-3">Usage</p>
                 <CodeBlock
-                    code={`import { SpotlightCard } from "@/components/ui/spotlight-card"
+                    code={`import { SpotlightCard } from "@/components/navyaui/SpotlightCard"
 
 export function SpotlightCardDemo() {
   return (

@@ -1,6 +1,5 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { cn } from "@/lib/utils";
 
 export const InfiniteMovingCards = ({
     items,
@@ -70,18 +69,11 @@ export const InfiniteMovingCards = ({
     return (
         <div
             ref={containerRef}
-            className={cn(
-                "scroller relative z-20 max-w-7xl overflow-hidden [mask-image:linear-gradient(to_right,transparent,white_20%,white_80%,transparent)]",
-                className
-            )}
+            className={`scroller relative z-20 max-w-7xl overflow-hidden [mask-image:linear-gradient(to_right,transparent,white_20%,white_80%,transparent)] ${className || ""}`.trim()}
         >
             <ul
                 ref={scrollerRef}
-                className={cn(
-                    "flex min-w-full shrink-0 gap-4 py-4 w-max flex-nowrap",
-                    start && "animate-scroll",
-                    pauseOnHover && "hover:[animation-play-state:paused]"
-                )}
+                className={`flex min-w-full shrink-0 gap-4 py-4 w-max flex-nowrap ${start ? "animate-navyaui-scroll" : ""} ${pauseOnHover ? "hover:[animation-play-state:paused]" : ""}`.trim()}
             >
                 {items.map((item, idx) => (
                     <li

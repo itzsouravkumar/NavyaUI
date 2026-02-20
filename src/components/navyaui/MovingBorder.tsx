@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
-import { cn } from "@/lib/utils";
 
 export const MovingBorder = ({
     children,
@@ -22,10 +21,7 @@ export const MovingBorder = ({
 }) => {
     return (
         <Component
-            className={cn(
-                "relative inline-flex h-12 overflow-hidden p-[1px] focus:outline-none",
-                containerClassName
-            )}
+            className={`relative inline-flex h-12 overflow-hidden p-[1px] focus:outline-none ${containerClassName || ""}`.trim()}
             style={{ borderRadius }}
             {...otherProps}
         >
@@ -43,10 +39,7 @@ export const MovingBorder = ({
 
             {/* Inner content */}
             <span
-                className={cn(
-                    "relative inline-flex h-full w-full items-center justify-center gap-2 rounded-full bg-background px-6 py-2 text-sm font-medium text-foreground backdrop-blur-xl",
-                    className
-                )}
+                className={`relative inline-flex h-full w-full items-center justify-center gap-2 rounded-full bg-background px-6 py-2 text-sm font-medium text-foreground backdrop-blur-xl ${className || ""}`.trim()}
                 style={{ borderRadius: `calc(${borderRadius} - 1px)` }}
             >
                 {children}

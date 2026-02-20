@@ -1,7 +1,6 @@
 "use client";
 import { useEffect } from "react";
 import { motion, stagger, useAnimate } from "framer-motion";
-import { cn } from "@/lib/utils";
 
 export const TextGenerateEffect = ({
     words,
@@ -32,7 +31,7 @@ export const TextGenerateEffect = ({
     }, [scope, animate, filter, duration]);
 
     return (
-        <div className={cn("font-bold", className)}>
+        <div className={`font-bold ${className || ""}`.trim()}>
             <div className="mt-4">
                 <div className="text-foreground text-2xl leading-snug tracking-wide" ref={scope}>
                     {wordsArray.map((word, idx) => (

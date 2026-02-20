@@ -9,5 +9,6 @@
       "type": "registry:ui",
       "target": "components/ui/3d-card.tsx"
     }
-  ]
+  ],
+  "tailwind": {}
 }

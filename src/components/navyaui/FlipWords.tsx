@@ -1,7 +1,6 @@
 "use client";
 import { useCallback, useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { cn } from "@/lib/utils";
 
 export const FlipWords = ({
     words,
@@ -41,7 +40,7 @@ export const FlipWords = ({
                         damping: 15,
                         duration: 0.4,
                     }}
-                    className={cn("inline-block whitespace-nowrap", className)}
+                    className={`inline-block whitespace-nowrap ${className || ""}`.trim()}
                 >
                     {words[currentIndex]}
                 </motion.span>

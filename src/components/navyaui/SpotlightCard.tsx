@@ -1,6 +1,5 @@
 "use client";
 import React, { useRef, useState } from "react";
-import { cn } from "@/lib/utils";
 
 export const SpotlightCard = ({
     children,
@@ -27,10 +26,7 @@ export const SpotlightCard = ({
             onMouseMove={handleMouseMove}
             onMouseEnter={() => setOpacity(1)}
             onMouseLeave={() => setOpacity(0)}
-            className={cn(
-                "relative overflow-hidden rounded-xl border border-border bg-card p-8",
-                className
-            )}
+            className={`relative overflow-hidden rounded-xl border border-border bg-card p-8 ${className || ""}`.trim()}
         >
             <div
                 className="pointer-events-none absolute -inset-px opacity-0 transition-opacity duration-500"

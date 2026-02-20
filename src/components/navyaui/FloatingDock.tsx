@@ -1,5 +1,3 @@
-"use client";
-import { cn } from "@/lib/utils";
 import {
     AnimatePresence,
     MotionValue,
@@ -23,10 +21,7 @@ export const FloatingDock = ({
         <motion.div
             onMouseMove={(e) => mouseX.set(e.pageX)}
             onMouseLeave={() => mouseX.set(Infinity)}
-            className={cn(
-                "mx-auto flex h-16 gap-4 items-end rounded-2xl bg-card/80 backdrop-blur-md border border-border px-4 pb-3",
-                desktopClassName
-            )}
+            className={`mx-auto flex h-16 gap-4 items-end rounded-2xl bg-card/80 backdrop-blur-md border border-border px-4 pb-3 ${desktopClassName || ""}`.trim()}
         >
             {items.map((item) => (
                 <IconContainer mouseX={mouseX} key={item.title} {...item} />

@@ -1,17 +1,22 @@
-import { CardContainer, CardBody, CardItem } from "@/components/ui/3d-card";
+import { CardContainer, CardBody, CardItem } from "@/components/navyaui/ThreeDCard";
 import { PageHeader, FadeInSection, SlideInSection } from "@/components/PageAnimations";
 import CodeBlock from "@/components/CodeBlock";
 
 const SOURCE_CODE = `"use client";
 import React, { useRef, useState } from "react";
-import { cn } from "@/lib/utils";
 
-const MouseEnterContext = React.createContext<{ isMouseEntered: boolean }>({ isMouseEntered: false });
+const MouseEnterContext = React.createContext<{
+    isMouseEntered: boolean;
+}>({ isMouseEntered: false });
 
 export const CardContainer = ({
-    children, className, containerClassName,
+    children,
+    className,
+    containerClassName,
 }: {
-    children: React.ReactNode; className?: string; containerClassName?: string;
+    children: React.ReactNode;
+    className?: string;
+    containerClassName?: string;
 }) => {
     const containerRef = useRef<HTMLDivElement>(null);
     const [isMouseEntered, setIsMouseEntered] = useState(false);
@@ -24,7 +29,11 @@ export const CardContainer = ({
         containerRef.current.style.transform = \`rotateY(\${x}deg) rotateX(\${-y}deg)\`;
     };
 
-    const handleMouseEnter = () => { setIsMouseEntered(true); };
+    const handleMouseEnter = () => {
+        setIsMouseEntered(true);
+        if (!containerRef.current) return;
+    };
+
     const handleMouseLeave = () => {
         if (!containerRef.current) return;
         setIsMouseEntered(false);
@@ -33,10 +42,18 @@ export const CardContainer = ({
 
     return (
         <MouseEnterContext.Provider value={{ isMouseEntered }}>
-            <div className={cn("flex items-center justify-center py-20", containerClassName)} style={{ perspective: "1000px" }}>
-                <div ref={containerRef} onMouseEnter={handleMouseEnter} onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave}
-                    className={cn("flex items-center justify-center relative transition-all duration-200 ease-linear", className)}
-                    style={{ transformStyle: "preserve-3d" }}>
+            <div
+                className={\`flex items-center justify-center py-20 \${containerClassName || ""}\`.trim()}
+                style={{ perspective: "1000px" }}
+            >
+                <div
+                    ref={containerRef}
+                    onMouseEnter={handleMouseEnter}
+                    onMouseMove={handleMouseMove}
+                    onMouseLeave={handleMouseLeave}
+                    className={\`flex items-center justify-center relative transition-all duration-200 ease-linear \${className || ""}\`.trim()}
+                    style={{ transformStyle: "preserve-3d" }}
+                >
                     {children}
                 </div>
             </div>
@@ -44,38 +61,67 @@ export const CardContainer = ({
     );
 };
 
-export const CardBody = ({ children, className }: { children: React.ReactNode; className?: string }) => {
+export const CardBody = ({
+    children,
+    className,
+}: {
+    children: React.ReactNode;
+    className?: string;
+}) => {
     return (
-        <div className={cn("h-96 w-96 [transform-style:preserve-3d] [&>*]:[transform-style:preserve-3d]", className)}>
+        <div
+            className={\`h-96 w-96 [transform-style:preserve-3d] [&>*]:[transform-style:preserve-3d] \${className || ""}\`.trim()}
+        >
             {children}
         </div>
     );
 };
 
 export const CardItem = ({
-    as: Tag = "div", children, className,
-    translateX = 0, translateY = 0, translateZ = 0,
-    rotateX = 0, rotateY = 0, rotateZ = 0, ...rest
+    as: Tag = "div",
+    children,
+    className,
+    translateX = 0,
+    translateY = 0,
+    translateZ = 0,
+    rotateX = 0,
+    rotateY = 0,
+    rotateZ = 0,
+    ...rest
 }: {
-    as?: React.ElementType; children: React.ReactNode; className?: string;
-    translateX?: number | string; translateY?: number | string; translateZ?: number | string;
-    rotateX?: number | string; rotateY?: number | string; rotateZ?: number | string;
+    as?: React.ElementType;
+    children: React.ReactNode;
+    className?: string;
+    translateX?: number | string;
+    translateY?: number | string;
+    translateZ?: number | string;
+    rotateX?: number | string;
+    rotateY?: number | string;
+    rotateZ?: number | string;
     [key: string]: unknown;
 }) => {
     const ref = useRef<HTMLDivElement>(null);
     const { isMouseEntered } = React.useContext(MouseEnterContext);
 
     React.useEffect(() => {
+        handleAnimations();
+    }, [isMouseEntered]);
+
+    const handleAnimations = () => {
         if (!ref.current) return;
         if (isMouseEntered) {
             ref.current.style.transform = \`translateX(\${translateX}px) translateY(\${translateY}px) translateZ(\${translateZ}px) rotateX(\${rotateX}deg) rotateY(\${rotateY}deg) rotateZ(\${rotateZ}deg)\`;
         } else {
             ref.current.style.transform = "translateX(0px) translateY(0px) translateZ(0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg)";
         }
-    }, [isMouseEntered]);
+    };
 
     return (
-        <Tag ref={ref} className={cn("w-fit transition duration-200 ease-linear", className)} {...rest}>
+        <Tag
+            ref={ref}
+            className={\`w-fit transition duration-200 ease-linear \${className || ""}\`.trim()}
+            {...rest}
+        >
             {children}
         </Tag>
     );
@@ -111,8 +157,7 @@ export default function ThreeDCardPage() {
       <FadeInSection className="mb-10">
         <p className="text-[11px] font-semibold text-muted-foreground uppercase tracking-widest mb-6">Install Manually</p>
         <div className="space-y-6">
-          <div className="flex gap-4"><div className="flex flex-col items-center"><div className="flex items-center justify-center w-7 h-7 rounded-full bg-foreground text-background text-xs font-bold shrink-0">1</div><div className="w-px flex-1 bg-border/30 mt-2" /></div><div className="flex-1 min-w-0 pb-2"><p className="text-sm font-medium text-foreground mb-3">Install dependencies</p><CodeBlock code="npm install clsx tailwind-merge" language="bash" filename="Terminal" /></div></div>
-          <div className="flex gap-4"><div className="flex flex-col items-center"><div className="flex items-center justify-center w-7 h-7 rounded-full bg-foreground text-background text-xs font-bold shrink-0">2</div></div><div className="flex-1 min-w-0"><p className="text-sm font-medium text-foreground mb-1">Copy the source code</p><p className="text-xs text-muted-foreground mb-3">Paste into <code className="text-xs bg-secondary/60 px-1.5 py-0.5 rounded font-mono text-foreground">components/ui/3d-card.tsx</code></p><CodeBlock code={SOURCE_CODE} language="tsx" filename="components/ui/3d-card.tsx" collapsible defaultCollapsed /></div></div>
+          <div className="flex gap-4"><div className="flex flex-col items-center"><div className="flex items-center justify-center w-7 h-7 rounded-full bg-foreground text-background text-xs font-bold shrink-0">1</div></div><div className="flex-1 min-w-0"><p className="text-sm font-medium text-foreground mb-1">Copy the source code</p><p className="text-xs text-muted-foreground mb-3">Paste into <code className="text-xs bg-secondary/60 px-1.5 py-0.5 rounded font-mono text-foreground">components/navyaui/ThreeDCard.tsx</code></p><CodeBlock code={SOURCE_CODE} language="tsx" filename="components/navyaui/ThreeDCard.tsx" collapsible defaultCollapsed /></div></div>
         </div>
       </FadeInSection>
 

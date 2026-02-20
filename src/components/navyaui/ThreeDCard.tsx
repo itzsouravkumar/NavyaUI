@@ -1,6 +1,5 @@
 "use client";
 import React, { useRef, useState } from "react";
-import { cn } from "@/lib/utils";
 
 const MouseEnterContext = React.createContext<{
     isMouseEntered: boolean;
@@ -40,7 +39,7 @@ export const CardContainer = ({
     return (
         <MouseEnterContext.Provider value={{ isMouseEntered }}>
             <div
-                className={cn("flex items-center justify-center py-20", containerClassName)}
+                className={`flex items-center justify-center py-20 ${containerClassName || ""}`.trim()}
                 style={{ perspective: "1000px" }}
             >
                 <div
@@ -48,10 +47,7 @@ export const CardContainer = ({
                     onMouseEnter={handleMouseEnter}
                     onMouseMove={handleMouseMove}
                     onMouseLeave={handleMouseLeave}
-                    className={cn(
-                        "flex items-center justify-center relative transition-all duration-200 ease-linear",
-                        className
-                    )}
+                    className={`flex items-center justify-center relative transition-all duration-200 ease-linear ${className || ""}`.trim()}
                     style={{ transformStyle: "preserve-3d" }}
                 >
                     {children}
@@ -70,10 +66,7 @@ export const CardBody = ({
 }) => {
     return (
         <div
-            className={cn(
-                "h-96 w-96 [transform-style:preserve-3d] [&>*]:[transform-style:preserve-3d]",
-                className
-            )}
+            className={`h-96 w-96 [transform-style:preserve-3d] [&>*]:[transform-style:preserve-3d] ${className || ""}`.trim()}
         >
             {children}
         </div>
@@ -122,7 +115,7 @@ export const CardItem = ({
     return (
         <Tag
             ref={ref}
-            className={cn("w-fit transition duration-200 ease-linear", className)}
+            className={`w-fit transition duration-200 ease-linear ${className || ""}`.trim()}
             {...rest}
         >
             {children}

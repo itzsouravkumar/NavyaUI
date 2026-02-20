@@ -1,11 +1,10 @@
-import { MovingBorder } from "@/components/ui/moving-border";
+import { MovingBorder } from "@/components/navyaui/MovingBorder";
 import { PageHeader, FadeInSection, SlideInSection } from "@/components/PageAnimations";
 import CodeBlock from "@/components/CodeBlock";
 
 const SOURCE_CODE = `"use client";
 import React from "react";
 import { motion } from "framer-motion";
-import { cn } from "@/lib/utils";
 
 export const MovingBorder = ({
     children,
@@ -26,10 +25,7 @@ export const MovingBorder = ({
 }) => {
     return (
         <Component
-            className={cn(
-                "relative inline-flex h-12 overflow-hidden p-[1px] focus:outline-none",
-                containerClassName
-            )}
+            className={\`relative inline-flex h-12 overflow-hidden p-[1px] focus:outline-none \${containerClassName || ""}\`.trim()}
             style={{ borderRadius }}
             {...otherProps}
         >
@@ -47,17 +43,15 @@ export const MovingBorder = ({
 
             {/* Inner content */}
             <span
-                className={cn(
-                    "relative inline-flex h-full w-full items-center justify-center gap-2 rounded-full bg-background px-6 py-2 text-sm font-medium text-foreground backdrop-blur-xl",
-                    className
-                )}
+                className={\`relative inline-flex h-full w-full items-center justify-center gap-2 rounded-full bg-background px-6 py-2 text-sm font-medium text-foreground backdrop-blur-xl \${className || ""}\`.trim()}
                 style={{ borderRadius: \`calc(\${borderRadius} - 1px)\` }}
             >
                 {children}
             </span>
         </Component>
     );
-};`;
+};
+`;
 
 export default function MovingBorderPage() {
     return (
@@ -89,7 +83,7 @@ export default function MovingBorderPage() {
                         <div className="flex flex-col items-center"><div className="flex items-center justify-center w-7 h-7 rounded-full bg-foreground text-background text-xs font-bold shrink-0">1</div><div className="w-px flex-1 bg-border/30 mt-2" /></div>
                         <div className="flex-1 min-w-0 pb-2">
                             <p className="text-sm font-medium text-foreground mb-3">Install dependencies</p>
-                            <CodeBlock code="npm install framer-motion clsx tailwind-merge" language="bash" filename="Terminal" />
+                            <CodeBlock code="npm install framer-motion " language="bash" filename="Terminal" />
                         </div>
                     </div>
                     <div className="flex gap-4">
@@ -100,11 +94,11 @@ export default function MovingBorderPage() {
                         </div>
                     </div>
                     <div className="flex gap-4">
-                        <div className="flex flex-col items-center"><div className="flex items-center justify-center w-7 h-7 rounded-full bg-foreground text-background text-xs font-bold shrink-0">3</div></div>
+                        <div className="flex flex-col items-center"><div className="flex items-center justify-center w-7 h-7 rounded-full bg-foreground text-background text-xs font-bold shrink-0">2</div></div>
                         <div className="flex-1 min-w-0">
                             <p className="text-sm font-medium text-foreground mb-1">Copy the source code</p>
-                            <p className="text-xs text-muted-foreground mb-3">Paste into <code className="text-xs bg-secondary/60 px-1.5 py-0.5 rounded font-mono text-foreground">components/ui/moving-border.tsx</code></p>
-                            <CodeBlock code={SOURCE_CODE} language="tsx" filename="components/ui/moving-border.tsx" collapsible defaultCollapsed />
+                            <p className="text-xs text-muted-foreground mb-3">Paste into <code className="text-xs bg-secondary/60 px-1.5 py-0.5 rounded font-mono text-foreground">components/navyaui/MovingBorder.tsx</code></p>
+                            <CodeBlock code={SOURCE_CODE} language="tsx" filename="components/navyaui/MovingBorder.tsx" collapsible defaultCollapsed />
                         </div>
                     </div>
                 </div>
@@ -112,7 +106,7 @@ export default function MovingBorderPage() {
 
             <SlideInSection direction="right" className="mb-10">
                 <p className="text-[11px] font-semibold text-muted-foreground uppercase tracking-widest mb-3">Usage</p>
-                <CodeBlock code={`import { MovingBorder } from "@/components/ui/moving-border"\n\nexport function MovingBorderDemo() {\n  return (\n    <MovingBorder duration={3000}>\n      Get Started →\n    </MovingBorder>\n  )\n}`} language="tsx" filename="Example.tsx" />
+                <CodeBlock code={`import { MovingBorder } from "@/components/navyaui/MovingBorder"\n\nexport function MovingBorderDemo() {\n  return (\n    <MovingBorder duration={3000}>\n      Get Started →\n    </MovingBorder>\n  )\n}`} language="tsx" filename="Example.tsx" />
             </SlideInSection>
 
             <FadeInSection>

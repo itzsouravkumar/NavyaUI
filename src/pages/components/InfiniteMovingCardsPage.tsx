@@ -1,4 +1,4 @@
-import { InfiniteMovingCards } from "@/components/ui/infinite-moving-cards";
+import { InfiniteMovingCards } from "@/components/navyaui/InfiniteMovingCards";
 import { PageHeader, FadeInSection, SlideInSection } from "@/components/PageAnimations";
 import CodeBlock from "@/components/CodeBlock";
 
@@ -11,12 +11,19 @@ const testimonials = [
 
 const SOURCE_CODE = `"use client";
 import React, { useEffect, useState } from "react";
-import { cn } from "@/lib/utils";
 
 export const InfiniteMovingCards = ({
-    items, direction = "left", speed = "fast", pauseOnHover = true, className,
+    items,
+    direction = "left",
+    speed = "fast",
+    pauseOnHover = true,
+    className,
 }: {
-    items: { quote: string; name: string; title: string }[];
+    items: {
+        quote: string;
+        name: string;
+        title: string;
+    }[];
     direction?: "left" | "right";
     speed?: "fast" | "normal" | "slow";
     pauseOnHover?: boolean;
@@ -24,44 +31,78 @@ export const InfiniteMovingCards = ({
 }) => {
     const containerRef = React.useRef<HTMLDivElement>(null);
     const scrollerRef = React.useRef<HTMLUListElement>(null);
-    useEffect(() => { addAnimation(); }, []);
+
+    useEffect(() => {
+        addAnimation();
+    }, []);
+
     const [start, setStart] = useState(false);
 
     function addAnimation() {
         if (containerRef.current && scrollerRef.current) {
             const scrollerContent = Array.from(scrollerRef.current.children);
+
             scrollerContent.forEach((item) => {
                 const duplicatedItem = item.cloneNode(true);
-                if (scrollerRef.current) scrollerRef.current.appendChild(duplicatedItem);
+                if (scrollerRef.current) {
+                    scrollerRef.current.appendChild(duplicatedItem);
+                }
             });
-            getDirection(); getSpeed(); setStart(true);
+
+            getDirection();
+            getSpeed();
+            setStart(true);
         }
     }
 
     const getDirection = () => {
         if (containerRef.current) {
-            containerRef.current.style.setProperty("--animation-direction", direction === "left" ? "forwards" : "reverse");
+            if (direction === "left") {
+                containerRef.current.style.setProperty("--animation-direction", "forwards");
+            } else {
+                containerRef.current.style.setProperty("--animation-direction", "reverse");
+            }
         }
     };
 
     const getSpeed = () => {
         if (containerRef.current) {
-            const durations = { fast: "20s", normal: "40s", slow: "80s" };
-            containerRef.current.style.setProperty("--animation-duration", durations[speed]);
+            if (speed === "fast") {
+                containerRef.current.style.setProperty("--animation-duration", "20s");
+            } else if (speed === "normal") {
+                containerRef.current.style.setProperty("--animation-duration", "40s");
+            } else {
+                containerRef.current.style.setProperty("--animation-duration", "80s");
+            }
         }
     };
 
     return (
-        <div ref={containerRef} className={cn("scroller relative z-20 max-w-7xl overflow-hidden [mask-image:linear-gradient(to_right,transparent,white_20%,white_80%,transparent)]", className)}>
-            <ul ref={scrollerRef} className={cn("flex min-w-full shrink-0 gap-4 py-4 w-max flex-nowrap", start && "animate-scroll", pauseOnHover && "hover:[animation-play-state:paused]")}>
+        <div
+            ref={containerRef}
+            className={\`scroller relative z-20 max-w-7xl overflow-hidden [mask-image:linear-gradient(to_right,transparent,white_20%,white_80%,transparent)] \${className || ""}\`.trim()}
+        >
+            <ul
+                ref={scrollerRef}
+                className={\`flex min-w-full shrink-0 gap-4 py-4 w-max flex-nowrap \${start ? "animate-navyaui-scroll" : ""} \${pauseOnHover ? "hover:[animation-play-state:paused]" : ""}\`.trim()}
+            >
                 {items.map((item, idx) => (
-                    <li className="w-[350px] max-w-full relative rounded-2xl border border-border flex-shrink-0 px-8 py-6 md:w-[450px] bg-card" key={item.name + idx}>
+                    <li
+                        className="w-[350px] max-w-full relative rounded-2xl border border-border flex-shrink-0 px-8 py-6 md:w-[450px] bg-card"
+                        key={item.name + idx}
+                    >
                         <blockquote>
-                            <span className="relative z-20 text-sm leading-[1.6] text-foreground">{item.quote}</span>
+                            <span className="relative z-20 text-sm leading-[1.6] text-foreground font-normal">
+                                {item.quote}
+                            </span>
                             <div className="relative z-20 mt-6 flex flex-row items-center">
                                 <span className="flex flex-col gap-1">
-                                    <span className="text-sm text-foreground">{item.name}</span>
-                                    <span className="text-sm text-muted-foreground">{item.title}</span>
+                                    <span className="text-sm leading-[1.6] text-foreground font-normal">
+                                        {item.name}
+                                    </span>
+                                    <span className="text-sm leading-[1.6] text-muted-foreground font-normal">
+                                        {item.title}
+                                    </span>
                                 </span>
                             </div>
                         </blockquote>
@@ -70,7 +111,8 @@ export const InfiniteMovingCards = ({
             </ul>
         </div>
     );
-};`;
+};
+`;
 
 export default function InfiniteMovingCardsPage() {
     return (
@@ -92,14 +134,14 @@ export default function InfiniteMovingCardsPage() {
             <FadeInSection className="mb-10">
                 <p className="text-[11px] font-semibold text-muted-foreground uppercase tracking-widest mb-6">Install Manually</p>
                 <div className="space-y-6">
-                    <div className="flex gap-4"><div className="flex flex-col items-center"><div className="flex items-center justify-center w-7 h-7 rounded-full bg-foreground text-background text-xs font-bold shrink-0">1</div><div className="w-px flex-1 bg-border/30 mt-2" /></div><div className="flex-1 min-w-0 pb-2"><p className="text-sm font-medium text-foreground mb-3">Install dependencies</p><CodeBlock code="npm install clsx tailwind-merge" language="bash" filename="Terminal" /></div></div>
-                    <div className="flex gap-4"><div className="flex flex-col items-center"><div className="flex items-center justify-center w-7 h-7 rounded-full bg-foreground text-background text-xs font-bold shrink-0">2</div></div><div className="flex-1 min-w-0"><p className="text-sm font-medium text-foreground mb-1">Copy the source code</p><p className="text-xs text-muted-foreground mb-3">Paste into <code className="text-xs bg-secondary/60 px-1.5 py-0.5 rounded font-mono text-foreground">components/ui/infinite-moving-cards.tsx</code></p><CodeBlock code={SOURCE_CODE} language="tsx" filename="components/ui/infinite-moving-cards.tsx" collapsible defaultCollapsed /></div></div>
+                    <div className="flex gap-4"><div className="flex flex-col items-center"><div className="flex items-center justify-center w-7 h-7 rounded-full bg-foreground text-background text-xs font-bold shrink-0">1</div><div className="w-px flex-1 bg-border/30 mt-2" /></div><div className="flex-1 min-w-0 pb-2"><p className="text-sm font-medium text-foreground mb-3">Install dependencies</p><CodeBlock code="" language="bash" filename="Terminal" /></div></div>
+                    <div className="flex gap-4"><div className="flex flex-col items-center"><div className="flex items-center justify-center w-7 h-7 rounded-full bg-foreground text-background text-xs font-bold shrink-0">1</div></div><div className="flex-1 min-w-0"><p className="text-sm font-medium text-foreground mb-1">Copy the source code</p><p className="text-xs text-muted-foreground mb-3">Paste into <code className="text-xs bg-secondary/60 px-1.5 py-0.5 rounded font-mono text-foreground">components/navyaui/InfiniteMovingCards.tsx</code></p><CodeBlock code={SOURCE_CODE} language="tsx" filename="components/navyaui/InfiniteMovingCards.tsx" collapsible defaultCollapsed /></div></div>
                 </div>
             </FadeInSection>
 
             <SlideInSection direction="right" className="mb-10">
                 <p className="text-[11px] font-semibold text-muted-foreground uppercase tracking-widest mb-3">Usage</p>
-                <CodeBlock code={`import { InfiniteMovingCards } from "@/components/ui/infinite-moving-cards"\n\nconst items = [\n  { quote: "Amazing!", name: "John", title: "CEO" },\n  { quote: "Best library.", name: "Jane", title: "CTO" },\n]\n\nexport function TestimonialsDemo() {\n  return (\n    <InfiniteMovingCards\n      items={items}\n      direction="left"\n      speed="normal"\n      pauseOnHover={true}\n    />\n  )\n}`} language="tsx" filename="Example.tsx" />
+                <CodeBlock code={`import { InfiniteMovingCards } from "@/components/navyaui/InfiniteMovingCards"\n\nconst items = [\n  { quote: "Amazing!", name: "John", title: "CEO" },\n  { quote: "Best library.", name: "Jane", title: "CTO" },\n]\n\nexport function TestimonialsDemo() {\n  return (\n    <InfiniteMovingCards\n      items={items}\n      direction="left"\n      speed="normal"\n      pauseOnHover={true}\n    />\n  )\n}`} language="tsx" filename="Example.tsx" />
             </SlideInSection>
 
             <FadeInSection>

@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-import { cn } from "@/lib/utils";
 
 export const BackgroundBeams = ({
     className,
@@ -28,10 +27,7 @@ export const BackgroundBeams = ({
 
     return (
         <div
-            className={cn(
-                "absolute inset-0 z-0 flex items-center justify-center [mask-repeat:no-repeat] [mask-size:40px]",
-                className
-            )}
+            className={`absolute inset-0 z-0 flex items-center justify-center [mask-repeat:no-repeat] [mask-size:40px] ${className || ""}`.trim()}
         >
             <svg
                 className="pointer-events-none absolute z-0 h-full w-full"

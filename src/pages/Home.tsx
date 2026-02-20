@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import { FlipWords } from "@/components/ui/flip-words";
+import { FlipWords } from "@/components/navyaui/FlipWords";
 import { ArrowRight, Sparkles, Zap, Box, MousePointer2, Type, Stars, Navigation, LayoutGrid } from "lucide-react";
 import CodeBlock from "@/components/CodeBlock";
 

@@ -1,11 +1,10 @@
-import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
+import { TextGenerateEffect } from "@/components/navyaui/TextGenerateEffect";
 import { PageHeader, FadeInSection, SlideInSection } from "@/components/PageAnimations";
 import CodeBlock from "@/components/CodeBlock";
 
 const SOURCE_CODE = `"use client";
 import { useEffect } from "react";
 import { motion, stagger, useAnimate } from "framer-motion";
-import { cn } from "@/lib/utils";
 
 export const TextGenerateEffect = ({
     words,
@@ -36,14 +35,16 @@ export const TextGenerateEffect = ({
     }, [scope, animate, filter, duration]);
 
     return (
-        <div className={cn("font-bold", className)}>
+        <div className={\`font-bold \${className || ""}\`.trim()}>
             <div className="mt-4">
                 <div className="text-foreground text-2xl leading-snug tracking-wide" ref={scope}>
                     {wordsArray.map((word, idx) => (
                         <motion.span
                             key={word + idx}
                             className="opacity-0"
-                            style={{ filter: filter ? "blur(10px)" : "none" }}
+                            style={{
+                                filter: filter ? "blur(10px)" : "none",
+                            }}
                         >
                             {word}{" "}
                         </motion.span>
@@ -52,7 +53,8 @@ export const TextGenerateEffect = ({
             </div>
         </div>
     );
-};`;
+};
+`;
 
 export default function TextGeneratePage() {
     return (
@@ -74,15 +76,15 @@ export default function TextGeneratePage() {
             <FadeInSection className="mb-10">
                 <p className="text-[11px] font-semibold text-muted-foreground uppercase tracking-widest mb-6">Install Manually</p>
                 <div className="space-y-6">
-                    <div className="flex gap-4"><div className="flex flex-col items-center"><div className="flex items-center justify-center w-7 h-7 rounded-full bg-foreground text-background text-xs font-bold shrink-0">1</div><div className="w-px flex-1 bg-border/30 mt-2" /></div><div className="flex-1 min-w-0 pb-2"><p className="text-sm font-medium text-foreground mb-3">Install dependencies</p><CodeBlock code="npm install framer-motion clsx tailwind-merge" language="bash" filename="Terminal" /></div></div>
-                    <div className="flex gap-4"><div className="flex flex-col items-center"><div className="flex items-center justify-center w-7 h-7 rounded-full bg-foreground text-background text-xs font-bold shrink-0">2</div><div className="w-px flex-1 bg-border/30 mt-2" /></div><div className="flex-1 min-w-0 pb-2"><p className="text-sm font-medium text-foreground mb-3">Add util file</p><CodeBlock code={`import { ClassValue, clsx } from "clsx";\nimport { twMerge } from "tailwind-merge";\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}`} language="tsx" filename="lib/utils.ts" /></div></div>
-                    <div className="flex gap-4"><div className="flex flex-col items-center"><div className="flex items-center justify-center w-7 h-7 rounded-full bg-foreground text-background text-xs font-bold shrink-0">3</div></div><div className="flex-1 min-w-0"><p className="text-sm font-medium text-foreground mb-1">Copy the source code</p><p className="text-xs text-muted-foreground mb-3">Paste into <code className="text-xs bg-secondary/60 px-1.5 py-0.5 rounded font-mono text-foreground">components/ui/text-generate-effect.tsx</code></p><CodeBlock code={SOURCE_CODE} language="tsx" filename="components/ui/text-generate-effect.tsx" collapsible defaultCollapsed /></div></div>
+                    <div className="flex gap-4"><div className="flex flex-col items-center"><div className="flex items-center justify-center w-7 h-7 rounded-full bg-foreground text-background text-xs font-bold shrink-0">1</div><div className="w-px flex-1 bg-border/30 mt-2" /></div><div className="flex-1 min-w-0 pb-2"><p className="text-sm font-medium text-foreground mb-3">Install dependencies</p><CodeBlock code="npm install framer-motion " language="bash" filename="Terminal" /></div></div>
+                    
+                    <div className="flex gap-4"><div className="flex flex-col items-center"><div className="flex items-center justify-center w-7 h-7 rounded-full bg-foreground text-background text-xs font-bold shrink-0">2</div></div><div className="flex-1 min-w-0"><p className="text-sm font-medium text-foreground mb-1">Copy the source code</p><p className="text-xs text-muted-foreground mb-3">Paste into <code className="text-xs bg-secondary/60 px-1.5 py-0.5 rounded font-mono text-foreground">components/navyaui/TextGenerateEffect.tsx</code></p><CodeBlock code={SOURCE_CODE} language="tsx" filename="components/navyaui/TextGenerateEffect.tsx" collapsible defaultCollapsed /></div></div>
                 </div>
             </FadeInSection>
 
             <SlideInSection direction="right" className="mb-10">
                 <p className="text-[11px] font-semibold text-muted-foreground uppercase tracking-widest mb-3">Usage</p>
-                <CodeBlock code={`import { TextGenerateEffect } from "@/components/ui/text-generate-effect"\n\nexport function TextGenerateDemo() {\n  return (\n    <TextGenerateEffect\n      words="Your text appears word by word with a blur animation."\n      duration={0.5}\n      filter={true}\n    />\n  )\n}`} language="tsx" filename="Example.tsx" />
+                <CodeBlock code={`import { TextGenerateEffect } from "@/components/navyaui/TextGenerateEffect"\n\nexport function TextGenerateDemo() {\n  return (\n    <TextGenerateEffect\n      words="Your text appears word by word with a blur animation."\n      duration={0.5}\n      filter={true}\n    />\n  )\n}`} language="tsx" filename="Example.tsx" />
             </SlideInSection>
 
             <FadeInSection>
