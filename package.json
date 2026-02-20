@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build:registry": "node scripts/build-registry.js",
+    "build": "npm run build:registry && tsc -b && vite build",
     "preview": "vite preview"
   },
   "dependencies": {

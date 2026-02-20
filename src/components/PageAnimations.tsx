@@ -14,7 +14,7 @@ export function PageHeader({
                 initial={{ opacity: 0, y: 20, filter: "blur(6px)" }}
                 animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                 transition={{ duration: 0.5, ease: [0.25, 0.4, 0.25, 1] }}
-                className="text-3xl font-bold text-foreground mb-2"
+                className="text-2xl sm:text-3xl font-bold text-foreground mb-2"
             >
                 {title}
             </motion.h1>
@@ -22,7 +22,7 @@ export function PageHeader({
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: 0.15 }}
-                className="text-muted-foreground"
+                className="text-sm sm:text-base text-muted-foreground"
             >
                 {description}
             </motion.p>

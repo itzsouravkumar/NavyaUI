@@ -66,7 +66,7 @@ export default function MovingBorderPage() {
 
             <FadeInSection className="mb-10">
                 <p className="text-[11px] font-semibold text-muted-foreground uppercase tracking-widest mb-4">Preview</p>
-                <div className="rounded-2xl border border-border/20 glass p-12 flex flex-col items-center gap-8">
+                <div className="rounded-2xl border border-border/20 glass p-6 sm:p-12 flex flex-col items-center gap-6 sm:gap-8">
                     <MovingBorder duration={3000}>Get Started →</MovingBorder>
                     <MovingBorder as="div" containerClassName="h-auto w-auto" className="px-8 py-6" borderRadius="16px" duration={4000}>
                         <div className="text-center">
@@ -87,21 +87,21 @@ export default function MovingBorderPage() {
                 <div className="space-y-6">
                     <div className="flex gap-4">
                         <div className="flex flex-col items-center"><div className="flex items-center justify-center w-7 h-7 rounded-full bg-foreground text-background text-xs font-bold shrink-0">1</div><div className="w-px flex-1 bg-border/30 mt-2" /></div>
-                        <div className="flex-1 pb-2">
+                        <div className="flex-1 min-w-0 pb-2">
                             <p className="text-sm font-medium text-foreground mb-3">Install dependencies</p>
                             <CodeBlock code="npm install framer-motion clsx tailwind-merge" language="bash" filename="Terminal" />
                         </div>
                     </div>
                     <div className="flex gap-4">
                         <div className="flex flex-col items-center"><div className="flex items-center justify-center w-7 h-7 rounded-full bg-foreground text-background text-xs font-bold shrink-0">2</div><div className="w-px flex-1 bg-border/30 mt-2" /></div>
-                        <div className="flex-1 pb-2">
+                        <div className="flex-1 min-w-0 pb-2">
                             <p className="text-sm font-medium text-foreground mb-3">Add util file</p>
                             <CodeBlock code={`import { ClassValue, clsx } from "clsx";\nimport { twMerge } from "tailwind-merge";\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}`} language="tsx" filename="lib/utils.ts" />
                         </div>
                     </div>
                     <div className="flex gap-4">
                         <div className="flex flex-col items-center"><div className="flex items-center justify-center w-7 h-7 rounded-full bg-foreground text-background text-xs font-bold shrink-0">3</div></div>
-                        <div className="flex-1">
+                        <div className="flex-1 min-w-0">
                             <p className="text-sm font-medium text-foreground mb-1">Copy the source code</p>
                             <p className="text-xs text-muted-foreground mb-3">Paste into <code className="text-xs bg-secondary/60 px-1.5 py-0.5 rounded font-mono text-foreground">components/ui/moving-border.tsx</code></p>
                             <CodeBlock code={SOURCE_CODE} language="tsx" filename="components/ui/moving-border.tsx" collapsible defaultCollapsed />
@@ -117,7 +117,7 @@ export default function MovingBorderPage() {
 
             <FadeInSection>
                 <p className="text-[11px] font-semibold text-muted-foreground uppercase tracking-widest mb-4">Props</p>
-                <div className="rounded-xl border border-border/20 bg-[#1e1e1e] overflow-hidden">
+                <div className="rounded-xl border border-border/20 bg-[#1e1e1e] overflow-hidden overflow-x-auto">
                     <table className="w-full text-sm" style={{ color: "#d4d4d4" }}>
                         <thead><tr className="border-b border-[#2d2d2d]"><th className="text-left px-4 py-3 font-medium text-[#808080] text-xs">Prop</th><th className="text-left px-4 py-3 font-medium text-[#808080] text-xs">Type</th><th className="text-left px-4 py-3 font-medium text-[#808080] text-xs">Default</th><th className="text-left px-4 py-3 font-medium text-[#808080] text-xs">Description</th></tr></thead>
                         <tbody className="font-mono text-xs">

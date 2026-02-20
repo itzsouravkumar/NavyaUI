@@ -8,22 +8,22 @@
   :root {
     --background: 0 0% 100%;
     --foreground: 0 0% 9%;
-    --card: 0 0% 97%;
+    --card: 0 0% 95%;
     --card-foreground: 0 0% 9%;
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 9%;
     --primary: 0 0% 9%;
     --primary-foreground: 0 0% 98%;
-    --secondary: 0 0% 94%;
+    --secondary: 0 0% 92%;
     --secondary-foreground: 0 0% 9%;
-    --muted: 0 0% 94%;
-    --muted-foreground: 0 0% 40%;
-    --accent: 0 0% 94%;
+    --muted: 0 0% 92%;
+    --muted-foreground: 0 0% 32%;
+    --accent: 0 0% 92%;
     --accent-foreground: 0 0% 9%;
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 85%;
-    --input: 0 0% 85%;
+    --border: 0 0% 78%;
+    --input: 0 0% 78%;
     --ring: 0 0% 9%;
     --radius: 0.625rem;
   }
@@ -97,10 +97,20 @@
     hsl(var(--secondary)) 100%
   );
   box-shadow:
+    0 1px 3px rgba(0,0,0,0.08),
+    inset 0 1px 0 rgba(255,255,255,0.04);
+}
+.dark .metal-card {
+  box-shadow:
     0 1px 2px rgba(0,0,0,0.1),
     inset 0 1px 0 rgba(255,255,255,0.04);
 }
 .metal-card:hover {
+  box-shadow:
+    0 4px 20px rgba(0,0,0,0.1),
+    inset 0 1px 0 rgba(255,255,255,0.06);
+}
+.dark .metal-card:hover {
   box-shadow:
     0 4px 20px rgba(0,0,0,0.15),
     inset 0 1px 0 rgba(255,255,255,0.06);
@@ -108,9 +118,16 @@
 
 /* Glassy surface */
 .glass {
-  background: hsl(var(--card) / 0.5);
+  background: hsl(var(--card) / 0.6);
   backdrop-filter: blur(20px) saturate(1.2);
   -webkit-backdrop-filter: blur(20px) saturate(1.2);
+  border: 1px solid hsl(var(--border) / 0.5);
+  box-shadow:
+    0 0 0 1px rgba(0,0,0,0.03) inset,
+    0 4px 30px rgba(0,0,0,0.06);
+}
+.dark .glass {
+  background: hsl(var(--card) / 0.5);
   border: 1px solid hsl(var(--border) / 0.4);
   box-shadow:
     0 0 0 1px rgba(255,255,255,0.03) inset,

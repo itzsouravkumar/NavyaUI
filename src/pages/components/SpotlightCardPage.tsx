@@ -59,7 +59,7 @@ export default function SpotlightCardPage() {
             {/* Preview */}
             <FadeInSection className="mb-10">
                 <p className="text-[11px] font-semibold text-muted-foreground uppercase tracking-widest mb-4">Preview</p>
-                <div className="rounded-2xl border border-border/20 glass p-8">
+                <div className="rounded-2xl border border-border/20 glass p-4 sm:p-8">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <SpotlightCard className="metal-card">
                             <h3 className="text-lg font-semibold text-foreground mb-2">Feature One</h3>
@@ -94,7 +94,7 @@ export default function SpotlightCardPage() {
                             <div className="flex items-center justify-center w-7 h-7 rounded-full bg-foreground text-background text-xs font-bold shrink-0">1</div>
                             <div className="w-px flex-1 bg-border/30 mt-2" />
                         </div>
-                        <div className="flex-1 pb-2">
+                        <div className="flex-1 min-w-0 pb-2">
                             <p className="text-sm font-medium text-foreground mb-3">Install dependencies</p>
                             <CodeBlock code="npm install framer-motion clsx tailwind-merge" language="bash" filename="Terminal" />
                         </div>
@@ -106,7 +106,7 @@ export default function SpotlightCardPage() {
                             <div className="flex items-center justify-center w-7 h-7 rounded-full bg-foreground text-background text-xs font-bold shrink-0">2</div>
                             <div className="w-px flex-1 bg-border/30 mt-2" />
                         </div>
-                        <div className="flex-1 pb-2">
+                        <div className="flex-1 min-w-0 pb-2">
                             <p className="text-sm font-medium text-foreground mb-3">Add util file</p>
                             <CodeBlock
                                 code={`import { ClassValue, clsx } from "clsx";
@@ -126,7 +126,7 @@ export function cn(...inputs: ClassValue[]) {
                         <div className="flex flex-col items-center">
                             <div className="flex items-center justify-center w-7 h-7 rounded-full bg-foreground text-background text-xs font-bold shrink-0">3</div>
                         </div>
-                        <div className="flex-1">
+                        <div className="flex-1 min-w-0">
                             <p className="text-sm font-medium text-foreground mb-1">Copy the source code</p>
                             <p className="text-xs text-muted-foreground mb-3">
                                 Copy the code below and paste it into <code className="text-xs bg-secondary/60 px-1.5 py-0.5 rounded font-mono text-foreground">components/ui/spotlight-card.tsx</code>
@@ -159,7 +159,7 @@ export function SpotlightCardDemo() {
             {/* Props */}
             <FadeInSection>
                 <p className="text-[11px] font-semibold text-muted-foreground uppercase tracking-widest mb-4">Props</p>
-                <div className="rounded-xl border border-border/20 bg-[#1e1e1e] overflow-hidden">
+                <div className="rounded-xl border border-border/20 bg-[#1e1e1e] overflow-hidden overflow-x-auto">
                     <table className="w-full text-sm" style={{ color: "#d4d4d4" }}>
                         <thead>
                             <tr className="border-b border-[#2d2d2d]">

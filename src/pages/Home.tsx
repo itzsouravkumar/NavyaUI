@@ -115,15 +115,15 @@ export default function Home() {
             <motion.div
                 ref={heroRef}
                 style={{ y: heroY, opacity: heroOpacity }}
-                className="py-16 md:py-24"
+                className="py-10 sm:py-16 md:py-24"
             >
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, ease: "easeOut" }}
                 >
-                    <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-border/40 bg-secondary/30 text-xs text-muted-foreground mb-8">
-                        <Sparkles className="w-3 h-3" />
+                    <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-border/40 bg-secondary/30 text-[10px] sm:text-xs text-muted-foreground mb-6 sm:mb-8 flex-wrap">
+                        <Sparkles className="w-3 h-3 shrink-0" />
                         <span>Free to use · Built on shadcn/ui · Framer Motion</span>
                     </div>
                 </motion.div>
@@ -132,7 +132,7 @@ export default function Home() {
                     initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
                     animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                     transition={{ duration: 0.7, delay: 0.15, ease: [0.25, 0.4, 0.25, 1] }}
-                    className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.2] overflow-visible"
+                    className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.2] overflow-visible"
                 >
                     <span className="text-foreground block">Make your websites</span>
                     <span className="text-foreground block mt-2">
@@ -145,7 +145,7 @@ export default function Home() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.35 }}
-                    className="mt-6 text-base md:text-lg text-muted-foreground max-w-xl leading-relaxed"
+                    className="mt-4 sm:mt-6 text-sm sm:text-base md:text-lg text-muted-foreground max-w-xl leading-relaxed"
                 >
                     Copy paste the most trending animated components and use them in your
                     websites without having to worry about styling and animations.
@@ -159,7 +159,7 @@ export default function Home() {
                 >
                     <Link to="/components/spotlight-card">
                         <button
-                            className="h-11 px-6 rounded-xl text-sm font-medium inline-flex items-center gap-2 transition-all duration-300 hover:scale-[1.03] active:scale-[0.98]"
+                            className="h-10 sm:h-11 px-5 sm:px-6 rounded-xl text-xs sm:text-sm font-medium inline-flex items-center gap-2 transition-all duration-300 hover:scale-[1.03] active:scale-[0.98]"
                             style={{
                                 background: "linear-gradient(135deg, #e8e8e8 0%, #999 30%, #333 70%, #111 100%)",
                                 color: "#fff",
@@ -213,7 +213,7 @@ export default function Home() {
             </ScrollReveal>
 
             {/* ─── All Components ─── */}
-            <div className="mb-20">
+            <div className="mb-12 sm:mb-20">
                 <ScrollReveal>
                     <div className="flex items-center gap-2 mb-6">
                         <motion.div
@@ -259,7 +259,7 @@ export default function Home() {
 
             {/* ─── Quick Start ─── */}
             <ScrollReveal direction="scale">
-                <div className="mb-20">
+                <div className="mb-12 sm:mb-20">
                     <div className="flex items-center gap-2 mb-4">
                         <motion.div
                             initial={{ width: 0 }}

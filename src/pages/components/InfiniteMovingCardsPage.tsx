@@ -92,8 +92,8 @@ export default function InfiniteMovingCardsPage() {
             <FadeInSection className="mb-10">
                 <p className="text-[11px] font-semibold text-muted-foreground uppercase tracking-widest mb-6">Install Manually</p>
                 <div className="space-y-6">
-                    <div className="flex gap-4"><div className="flex flex-col items-center"><div className="flex items-center justify-center w-7 h-7 rounded-full bg-foreground text-background text-xs font-bold shrink-0">1</div><div className="w-px flex-1 bg-border/30 mt-2" /></div><div className="flex-1 pb-2"><p className="text-sm font-medium text-foreground mb-3">Install dependencies</p><CodeBlock code="npm install clsx tailwind-merge" language="bash" filename="Terminal" /></div></div>
-                    <div className="flex gap-4"><div className="flex flex-col items-center"><div className="flex items-center justify-center w-7 h-7 rounded-full bg-foreground text-background text-xs font-bold shrink-0">2</div></div><div className="flex-1"><p className="text-sm font-medium text-foreground mb-1">Copy the source code</p><p className="text-xs text-muted-foreground mb-3">Paste into <code className="text-xs bg-secondary/60 px-1.5 py-0.5 rounded font-mono text-foreground">components/ui/infinite-moving-cards.tsx</code></p><CodeBlock code={SOURCE_CODE} language="tsx" filename="components/ui/infinite-moving-cards.tsx" collapsible defaultCollapsed /></div></div>
+                    <div className="flex gap-4"><div className="flex flex-col items-center"><div className="flex items-center justify-center w-7 h-7 rounded-full bg-foreground text-background text-xs font-bold shrink-0">1</div><div className="w-px flex-1 bg-border/30 mt-2" /></div><div className="flex-1 min-w-0 pb-2"><p className="text-sm font-medium text-foreground mb-3">Install dependencies</p><CodeBlock code="npm install clsx tailwind-merge" language="bash" filename="Terminal" /></div></div>
+                    <div className="flex gap-4"><div className="flex flex-col items-center"><div className="flex items-center justify-center w-7 h-7 rounded-full bg-foreground text-background text-xs font-bold shrink-0">2</div></div><div className="flex-1 min-w-0"><p className="text-sm font-medium text-foreground mb-1">Copy the source code</p><p className="text-xs text-muted-foreground mb-3">Paste into <code className="text-xs bg-secondary/60 px-1.5 py-0.5 rounded font-mono text-foreground">components/ui/infinite-moving-cards.tsx</code></p><CodeBlock code={SOURCE_CODE} language="tsx" filename="components/ui/infinite-moving-cards.tsx" collapsible defaultCollapsed /></div></div>
                 </div>
             </FadeInSection>
 
@@ -104,7 +104,7 @@ export default function InfiniteMovingCardsPage() {
 
             <FadeInSection>
                 <p className="text-[11px] font-semibold text-muted-foreground uppercase tracking-widest mb-4">Props</p>
-                <div className="rounded-xl border border-border/20 bg-[#1e1e1e] overflow-hidden">
+                <div className="rounded-xl border border-border/20 bg-[#1e1e1e] overflow-hidden overflow-x-auto">
                     <table className="w-full text-sm" style={{ color: "#d4d4d4" }}>
                         <thead><tr className="border-b border-[#2d2d2d]"><th className="text-left px-4 py-3 font-medium text-[#808080] text-xs">Prop</th><th className="text-left px-4 py-3 font-medium text-[#808080] text-xs">Type</th><th className="text-left px-4 py-3 font-medium text-[#808080] text-xs">Default</th><th className="text-left px-4 py-3 font-medium text-[#808080] text-xs">Description</th></tr></thead>
                         <tbody className="font-mono text-xs">

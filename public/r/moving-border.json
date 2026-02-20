@@ -1,0 +1,15 @@
+{
+  "name": "moving-border",
+  "type": "registry:ui",
+  "dependencies": [
+    "framer-motion"
+  ],
+  "files": [
+    {
+      "path": "ui/moving-border.tsx",
+      "content": "\"use client\";\nimport React from \"react\";\nimport { motion } from \"framer-motion\";\nimport { cn } from \"@/lib/utils\";\n\nexport const MovingBorder = ({\n    children,\n    duration = 2000,\n    className,\n    containerClassName,\n    borderRadius = \"9999px\",\n    as: Component = \"button\",\n    ...otherProps\n}: {\n    children: React.ReactNode;\n    duration?: number;\n    className?: string;\n    containerClassName?: string;\n    borderRadius?: string;\n    as?: React.ElementType;\n    [key: string]: unknown;\n}) => {\n    return (\n        <Component\n            className={cn(\n                \"relative inline-flex h-12 overflow-hidden p-[1px] focus:outline-none\",\n                containerClassName\n            )}\n            style={{ borderRadius }}\n            {...otherProps}\n        >\n            {/* Spinning gradient border */}\n            <span className=\"absolute inset-[-1000%]\">\n                <motion.span\n                    animate={{ rotate: 360 }}\n                    transition={{ duration: duration / 1000, repeat: Infinity, ease: \"linear\" }}\n                    className=\"block h-full w-full\"\n                    style={{\n                        background: \"conic-gradient(from 0deg, transparent 0%, #ffffff 10%, transparent 20%)\",\n                    }}\n                />\n            </span>\n\n            {/* Inner content */}\n            <span\n                className={cn(\n                    \"relative inline-flex h-full w-full items-center justify-center gap-2 rounded-full bg-background px-6 py-2 text-sm font-medium text-foreground backdrop-blur-xl\",\n                    className\n                )}\n                style={{ borderRadius: `calc(${borderRadius} - 1px)` }}\n            >\n                {children}\n            </span>\n        </Component>\n    );\n};\n",
+      "type": "registry:ui",
+      "target": "components/ui/moving-border.tsx"
+    }
+  ]
+}

@@ -168,7 +168,7 @@ export default function Hero() {
                         <Sparkles className="w-4 h-4 text-muted-foreground" />
                         <h3 className="font-semibold text-foreground">Available Components</h3>
                     </div>
-                    <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
                         {[
                             "spotlight-card",
                             "moving-border",
@@ -186,7 +186,7 @@ export default function Hero() {
                                 whileInView={{ opacity: 1, scale: 1 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: idx * 0.04, duration: 0.3 }}
-                                className="rounded-lg bg-secondary/30 border border-border/10 px-3 py-2"
+                                className="rounded-lg bg-secondary/30 border border-border/10 px-3 py-2 truncate"
                             >
                                 <code className="text-xs font-mono text-foreground">@navya/{name}</code>
                             </motion.div>

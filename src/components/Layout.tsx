@@ -92,31 +92,17 @@ export default function Layout({
 
             {/* ─── Navbar ─── */}
             <nav className="sticky top-0 z-50 w-full border-b border-border/50 bg-background/70 backdrop-blur-2xl">
-                <div className="mx-auto flex h-16 max-w-screen-2xl items-center justify-between px-6 lg:px-10">
+                <div className="mx-auto flex h-16 max-w-screen-2xl items-center justify-between px-4 sm:px-6 lg:px-10">
                     {/* Left: logo */}
                     <div className="flex items-center gap-5">
-                        <button
-                            className="lg:hidden p-2 rounded-lg hover:bg-secondary transition-colors"
-                            onClick={() => setMobileOpen(!mobileOpen)}
-                        >
-                            {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-                        </button>
-
                         <Link to="/" className="flex items-center gap-2.5 group">
                             <div
-                                className="relative w-8 h-8 rounded-lg overflow-hidden flex items-center justify-center shadow-lg shadow-white/5 group-hover:shadow-white/10 transition-shadow duration-300"
+                                className="relative w-8 h-8 rounded-lg overflow-hidden flex items-center justify-center shadow-lg shadow-black/10 dark:shadow-white/5 group-hover:shadow-black/15 dark:group-hover:shadow-white/10 transition-shadow duration-300"
                                 style={{ background: "linear-gradient(135deg, #e8e8e8 0%, #999 30%, #333 70%, #111 100%)" }}
                             >
                                 <span className="text-[13px] font-black text-white drop-shadow-sm">N</span>
                             </div>
-                            <span
-                                className="text-lg font-bold tracking-tight"
-                                style={{
-                                    background: "linear-gradient(90deg, #fff 0%, #888 100%)",
-                                    WebkitBackgroundClip: "text",
-                                    WebkitTextFillColor: "transparent",
-                                }}
-                            >
+                            <span className="text-lg font-bold tracking-tight text-foreground">
                                 NavyaUI
                             </span>
                         </Link>
@@ -189,7 +175,7 @@ export default function Layout({
                             href="https://github.com/itzsouravkumar"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center justify-center rounded-xl w-10 h-10 hover:bg-secondary/80 transition-all duration-200 border border-border/50"
+                            className="hidden sm:inline-flex items-center justify-center rounded-xl w-10 h-10 hover:bg-secondary/80 transition-all duration-200 border border-border/50"
                             aria-label="GitHub"
                         >
                             <Github className="h-4 w-4 text-foreground" />
@@ -198,7 +184,7 @@ export default function Layout({
                             href="https://buymeacoffee.com/itzsouravkumar"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center justify-center rounded-xl w-10 h-10 hover:bg-secondary/80 transition-all duration-200 border border-border/50"
+                            className="hidden sm:inline-flex items-center justify-center rounded-xl w-10 h-10 hover:bg-secondary/80 transition-all duration-200 border border-border/50"
                             aria-label="Buy me a Coffee"
                         >
                             <Coffee className="h-4 w-4 text-foreground" />
@@ -210,15 +196,29 @@ export default function Layout({
                         >
                             {theme === "dark" ? <Sun className="h-4 w-4 text-foreground" /> : <Moon className="h-4 w-4 text-foreground" />}
                         </button>
+                        <button
+                            className="lg:hidden p-2 rounded-lg hover:bg-secondary transition-colors"
+                            onClick={() => setMobileOpen(!mobileOpen)}
+                        >
+                            {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+                        </button>
                     </div>
                 </div>
             </nav>
+
+            {/* Mobile overlay backdrop */}
+            {mobileOpen && (
+                <div
+                    className="fixed inset-0 z-30 bg-black/60 backdrop-blur-sm lg:hidden"
+                    onClick={() => setMobileOpen(false)}
+                />
+            )}
 
             <div className="mx-auto max-w-screen-2xl flex">
                 {/* ─── Sidebar ─── */}
                 <aside
                     className={cn(
-                        "fixed lg:sticky top-16 z-40 h-[calc(100vh-4rem)] w-64 shrink-0 overflow-y-auto border-r border-border/30 bg-background/90 backdrop-blur-xl transition-transform lg:translate-x-0",
+                        "fixed lg:sticky top-16 z-40 h-[calc(100vh-4rem)] w-64 shrink-0 overflow-y-auto border-r border-border/30 bg-background/95 backdrop-blur-xl transition-transform duration-300 ease-in-out lg:translate-x-0",
                         mobileOpen ? "translate-x-0" : "-translate-x-full"
                     )}
                 >
@@ -301,14 +301,14 @@ export default function Layout({
                 </aside>
 
                 {/* ─── Main content ─── */}
-                <main className="flex-1 min-w-0 px-6 md:px-12 py-10">
+                <main className="flex-1 min-w-0 px-4 sm:px-6 md:px-12 py-6 sm:py-10">
                     <Outlet />
 
                     {/* ─── Footer ─── */}
-                    <footer className="mt-20 border-t border-border/20 pt-8 pb-12">
-                        <div className="flex items-center justify-center gap-1.5 text-sm text-muted-foreground">
+                    <footer className="mt-12 sm:mt-20 border-t border-border/20 pt-6 sm:pt-8 pb-8 sm:pb-12">
+                        <div className="flex items-center justify-center gap-1.5 text-xs sm:text-sm text-muted-foreground">
                             <span>Made with</span>
-                            <Heart className="w-3.5 h-3.5 text-red-500 fill-red-500" />
+                            <Heart className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-red-500 fill-red-500" />
                             <span>by</span>
                             <a href="https://sour4v.tech/" target="_blank" rel="noopener noreferrer" className="text-foreground font-medium hover:underline underline-offset-4 transition-colors">
                                 Sourav

@@ -169,7 +169,7 @@ export default function CodeBlock({
             {/* Code */}
             {!collapsed && (
                 <div className="p-4 overflow-x-auto">
-                    <pre className="text-[13px] font-mono leading-[1.6]" style={{ color: "#d4d4d4" }}>
+                    <pre className="text-[11px] sm:text-[13px] font-mono leading-[1.6]" style={{ color: "#d4d4d4" }}>
                         <code dangerouslySetInnerHTML={{ __html: highlightCode(code) }} />
                     </pre>
                 </div>
