@@ -11,6 +11,7 @@ import BackgroundBeamsPage from "./pages/components/BackgroundBeamsPage";
 import MeteorsPage from "./pages/components/MeteorsPage";
 import InfiniteMovingCardsPage from "./pages/components/InfiniteMovingCardsPage";
 import FloatingDockPage from "./pages/components/FloatingDockPage";
+import FluidSmokeBackgroundPage from "./pages/components/FluidSmokeBackgroundPage";
 import GettingStartedPage from "./pages/GettingStartedPage";
 
 function App() {
@@ -40,6 +41,7 @@ function App() {
         <Route path="components/meteors" element={<MeteorsPage />} />
         <Route path="components/infinite-moving-cards" element={<InfiniteMovingCardsPage />} />
         <Route path="components/floating-dock" element={<FloatingDockPage />} />
+        <Route path="components/fluid-smoke-background" element={<FluidSmokeBackgroundPage />} />
       </Route>
     </Routes>
   );

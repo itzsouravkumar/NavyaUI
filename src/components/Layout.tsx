@@ -12,6 +12,7 @@ const components = [
     { name: "Flip Words", href: "/components/flip-words", tag: "Text" },
     { name: "Text Generate Effect", href: "/components/text-generate-effect", tag: "Text" },
     { name: "Background Beams", href: "/components/background-beams", tag: "Backgrounds" },
+    { name: "Fluid Smoke Background", href: "/components/fluid-smoke-background", tag: "Backgrounds" },
     { name: "Infinite Moving Cards", href: "/components/infinite-moving-cards", tag: "Layout" },
     { name: "Floating Dock", href: "/components/floating-dock", tag: "Navigation" },
 ];
