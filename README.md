@@ -1,43 +1,62 @@
-# NavyaUI
+# ✨ NavyaUI
 
-A fully custom, modern, production-ready UI component library built entirely from scratch with React, TypeScript, and TailwindCSS (for utility only). No third-party UI libraries are used.
+> **your website called. it wants to look hot.** 🔥
 
-## Architecture
+NavyaUI is a drop-in animated component library that makes your React sites go from *"meh"* to *"wait, you built that?!"* — built on top of **shadcn/ui** and **Framer Motion**.
 
-This project is structured as an NPM Workspace Monorepo:
+### 🪩 live demo → [navyaui.vercel.app](https://navyaui.vercel.app)
 
-- **`apps/docs`**: The documentation website built with Vite, React, and MDX.
-- **`packages/core`**: Design tokens, custom animations, and CSS variables for the NavyaUI theme system.
-- **`packages/react`**: The fully accessible custom UI React component library.
-- **`packages/utils`**: Shared utilities like `cn` (class merger).
+---
 
-## Getting Started
+## 💅 what's inside
 
-To run the project locally, run the following commands from the project root directory:
+| component | vibe |
+|---|---|
+| 🔦 **Spotlight Card** | cursor-tracking radial glow — premium af |
+| 🌀 **Moving Border** | orbiting conic gradient border — hypnotic |
+| 🔤 **Flip Words** | spring-animated word cycling — *chef's kiss* |
+| ✍️ **Text Generate** | blur-to-sharp word reveal — cinematic |
+| 🃏 **3D Card** | perspective tilt with depth layers — immersive |
+| ⚡ **Background Beams** | animated SVG gradient beams — hero vibes |
+| ☄️ **Meteors** | shooting star particles — space energy |
+| 🎠 **Infinite Cards** | auto-scrolling testimonial carousel — social proof |
+| 🚀 **Floating Dock** | macOS-style magnifying dock — iconic |
 
-1. **Install Dependencies:**
-   ```bash
-   npm install
-   ```
+---
 
-2. **Run the Documentation Site:**
-   ```bash
-   npm run dev --workspace=docs
-   ```
-   Or simply:
-   ```bash
-   npm run dev
-   ```
-   *(This starts the Vite dev server for the docs app.)*
+## ⚡ quickstart
 
-3. **View the Components:**
-   Open [http://localhost:5173](http://localhost:5173) in your browser.
-   Navigate to the Components section (`/components/button`) to see the live examples.
-
-## Building for Production
-
-To build the React library and Documentation app:
 ```bash
-npm run build
+npx shadcn@latest add "@navya/spotlight-card"
 ```
-This runs the workspace build scripts for creating the optimized `dist` folders across all packages.
+
+or just copy-paste from the docs. we don't judge. 🫡
+
+---
+
+## 🧬 the stack
+
+- ⚛️ React + TypeScript
+- 🎨 Tailwind CSS
+- 🎬 Framer Motion
+- 🧩 shadcn/ui base
+
+---
+
+## 🤝 contributing
+
+PRs are welcome. if you make something cool, we'll probably merge it while doing a happy dance. 💃
+
+---
+
+## 📜 license
+
+MIT — do whatever you want. seriously. go wild. 🦁
+
+---
+
+<p align="center">
+  made with ❤️ by <a href="https://sour4v.tech">sourav</a>
+  <br/>
+  <sub>if this saved you time, maybe <a href="https://buymeacoffee.com/itzsouravkumar">buy me a coffee</a>? ☕</sub>
+</p>
