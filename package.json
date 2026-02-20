@@ -1,6 +1,6 @@
 {
   "name": "navyaui",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Premium animated UI components built with React and Tailwind CSS.",
   "type": "module",
   "main": "dist-lib/navyaui.cjs",
@@ -37,6 +37,7 @@
     "@tsparticles/plugin-polygon-mask": "^3.9.1",
     "@tsparticles/react": "^3.0.0",
     "@tsparticles/slim": "^3.9.1",
+    "clsx": "^2.1.1",
     "framer-motion": "^11.3.0",
     "lucide-react": "^0.424.0",
     "react-router-dom": "^6.26.0",

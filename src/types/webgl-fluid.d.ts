@@ -1,1 +1,1 @@
-declare module "webgl-fluid";
+declare module 'webgl-fluid';

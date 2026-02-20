@@ -7,7 +7,7 @@ export default defineConfig({
     plugins: [
         react(),
         dts({
-            include: ['src/components/navyaui', 'src/lib', 'src/index.ts'],
+            include: ['src/components/navyaui', 'src/lib', 'src/index.ts', 'src/types'],
             insertTypesEntry: true,
         })
     ],
