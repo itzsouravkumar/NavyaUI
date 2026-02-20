@@ -109,31 +109,9 @@ export default function Layout({
                         </Link>
                     </div>
 
-                    {/* Center: nav links */}
-                    <div className="hidden lg:flex items-center gap-1">
-                        {[
-                            { name: "Home", href: "/", match: (p: string) => p === "/" },
-                            { name: "Components", href: "/components/spotlight-card", match: (p: string) => p.startsWith("/components") },
-                        ].map((link) => (
-                            <Link
-                                key={link.name}
-                                to={link.href}
-                                className={cn(
-                                    "px-4 py-1.5 rounded-lg text-sm transition-all duration-200",
-                                    link.match(location.pathname)
-                                        ? "text-foreground bg-secondary/80 shadow-sm"
-                                        : "text-muted-foreground hover:text-foreground hover:bg-secondary/50"
-                                )}
-                            >
-                                {link.name}
-                            </Link>
-                        ))}
-                    </div>
-
-                    {/* Right: search + theme */}
-                    <div className="flex items-center gap-3">
-                        {/* Functional search */}
-                        <div className="hidden md:block relative">
+                    {/* Center: Search */}
+                    <div className="hidden lg:flex flex-1 items-center justify-center">
+                        <div className="relative">
                             <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground z-10" />
                             <input
                                 ref={navSearchRef}
@@ -142,7 +120,7 @@ export default function Layout({
                                 value={searchQuery}
                                 onChange={(e) => handleNavSearch(e.target.value)}
                                 onFocus={() => { if (searchQuery.length > 0) setNavSearchOpen(true); }}
-                                className="h-10 w-72 lg:w-80 rounded-xl border border-border/60 bg-secondary/40 pl-10 pr-14 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-white/10 focus:bg-secondary/60 transition-all duration-300"
+                                className="h-10 w-[24rem] rounded-xl border border-border/60 bg-secondary/40 pl-10 pr-14 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-white/10 focus:bg-secondary/60 transition-all duration-300"
                             />
                             <div className="absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none inline-flex items-center gap-0.5 rounded-md border border-border/60 bg-muted/50 px-1.5 py-0.5">
                                 <Command className="h-3 w-3 text-muted-foreground" />
@@ -171,7 +149,10 @@ export default function Layout({
                                 </div>
                             )}
                         </div>
+                    </div>
 
+                    {/* Right: theme + actions */}
+                    <div className="flex items-center gap-3">
                         <a
                             href="https://github.com/itzsouravkumar"
                             target="_blank"
@@ -215,91 +196,93 @@ export default function Layout({
                 />
             )}
 
-            <div className="mx-auto max-w-screen-2xl flex">
+            <div className={cn("mx-auto flex", location.pathname === "/" ? "max-w-7xl justify-center" : "max-w-screen-2xl")}>
                 {/* ─── Sidebar ─── */}
-                <aside
-                    className={cn(
-                        "fixed lg:sticky top-16 z-40 h-[calc(100vh-4rem)] w-64 shrink-0 overflow-y-auto border-r border-border/30 bg-background/95 backdrop-blur-xl transition-transform duration-300 ease-in-out lg:translate-x-0",
-                        mobileOpen ? "translate-x-0" : "-translate-x-full"
-                    )}
-                >
-                    <div className="p-4 pt-3">
-                        {/* Sidebar filter */}
-                        <div className="relative mb-3">
-                            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-muted-foreground" />
-                            <input
-                                type="text"
-                                placeholder="Filter..."
-                                value={searchQuery}
-                                onChange={(e) => setSearchQuery(e.target.value)}
-                                className="h-8 w-full rounded-lg border border-border/50 bg-secondary/40 pl-8 pr-3 text-[13px] text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-white/10 transition-all"
-                            />
-                        </div>
-
-                        {/* Getting Started */}
-                        <div className="mb-2">
-                            <p className="mb-0.5 text-[11px] font-semibold text-muted-foreground uppercase tracking-[0.15em]">
-                                Getting Started
-                            </p>
-                            <div className="flex flex-col gap-0 border-l border-border/40 ml-0.5 pl-3">
-                                <Link
-                                    to="/"
-                                    onClick={() => setMobileOpen(false)}
-                                    className={cn(
-                                        "rounded-md px-2 py-1 text-[13px] transition-all duration-200",
-                                        location.pathname === "/"
-                                            ? "bg-secondary/80 text-foreground font-medium"
-                                            : "text-muted-foreground hover:text-foreground hover:bg-secondary/40"
-                                    )}
-                                >
-                                    Introduction
-                                </Link>
-                                <Link
-                                    to="/getting-started"
-                                    onClick={() => setMobileOpen(false)}
-                                    className={cn(
-                                        "rounded-md px-2 py-1 text-[13px] transition-all duration-200",
-                                        location.pathname === "/getting-started"
-                                            ? "bg-secondary/80 text-foreground font-medium"
-                                            : "text-muted-foreground hover:text-foreground hover:bg-secondary/40"
-                                    )}
-                                >
-                                    Configuration
-                                </Link>
+                {location.pathname !== "/" && (
+                    <aside
+                        className={cn(
+                            "fixed lg:sticky top-16 z-40 h-[calc(100vh-4rem)] w-64 shrink-0 overflow-y-auto border-r border-border/30 bg-background/95 backdrop-blur-xl transition-transform duration-300 ease-in-out lg:translate-x-0",
+                            mobileOpen ? "translate-x-0" : "-translate-x-full"
+                        )}
+                    >
+                        <div className="p-4 pt-3">
+                            {/* Sidebar filter */}
+                            <div className="relative mb-3">
+                                <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-muted-foreground" />
+                                <input
+                                    type="text"
+                                    placeholder="Filter..."
+                                    value={searchQuery}
+                                    onChange={(e) => setSearchQuery(e.target.value)}
+                                    className="h-8 w-full rounded-lg border border-border/50 bg-secondary/40 pl-8 pr-3 text-[13px] text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-white/10 transition-all"
+                                />
                             </div>
-                        </div>
 
-                        {/* Component categories */}
-                        {categories.map((category) => {
-                            const items = filteredComponents.filter((c) => c.tag === category);
-                            if (items.length === 0) return null;
-                            return (
-                                <div key={category} className="mb-2">
-                                    <p className="mb-0.5 text-[11px] font-semibold text-muted-foreground uppercase tracking-[0.15em]">
-                                        {category}
-                                    </p>
-                                    <div className="flex flex-col gap-0 border-l border-border/40 ml-0.5 pl-3">
-                                        {items.map((comp) => (
-                                            <Link
-                                                key={comp.href}
-                                                to={comp.href}
-                                                onClick={() => setMobileOpen(false)}
-                                                className={cn(
-                                                    "rounded-md px-2 py-1 text-[13px] transition-all duration-200",
-                                                    location.pathname === comp.href
-                                                        ? "bg-secondary/80 text-foreground font-medium"
-                                                        : "text-muted-foreground hover:text-foreground hover:bg-secondary/40"
-                                                )}
-                                            >
-                                                {comp.name}
-                                            </Link>
-                                        ))}
-                                    </div>
+                            {/* Getting Started */}
+                            <div className="mb-2">
+                                <p className="mb-0.5 text-[11px] font-semibold text-muted-foreground uppercase tracking-[0.15em]">
+                                    Getting Started
+                                </p>
+                                <div className="flex flex-col gap-0 border-l border-border/40 ml-0.5 pl-3">
+                                    <Link
+                                        to="/"
+                                        onClick={() => setMobileOpen(false)}
+                                        className={cn(
+                                            "rounded-md px-2 py-1 text-[13px] transition-all duration-200",
+                                            location.pathname === "/"
+                                                ? "bg-secondary/80 text-foreground font-medium"
+                                                : "text-muted-foreground hover:text-foreground hover:bg-secondary/40"
+                                        )}
+                                    >
+                                        Introduction
+                                    </Link>
+                                    <Link
+                                        to="/getting-started"
+                                        onClick={() => setMobileOpen(false)}
+                                        className={cn(
+                                            "rounded-md px-2 py-1 text-[13px] transition-all duration-200",
+                                            location.pathname === "/getting-started"
+                                                ? "bg-secondary/80 text-foreground font-medium"
+                                                : "text-muted-foreground hover:text-foreground hover:bg-secondary/40"
+                                        )}
+                                    >
+                                        Configuration
+                                    </Link>
                                 </div>
-                            );
-                        })}
-                    </div>
-                </aside>
+                            </div>
+
+                            {/* Component categories */}
+                            {categories.map((category) => {
+                                const items = filteredComponents.filter((c) => c.tag === category);
+                                if (items.length === 0) return null;
+                                return (
+                                    <div key={category} className="mb-2">
+                                        <p className="mb-0.5 text-[11px] font-semibold text-muted-foreground uppercase tracking-[0.15em]">
+                                            {category}
+                                        </p>
+                                        <div className="flex flex-col gap-0 border-l border-border/40 ml-0.5 pl-3">
+                                            {items.map((comp) => (
+                                                <Link
+                                                    key={comp.href}
+                                                    to={comp.href}
+                                                    onClick={() => setMobileOpen(false)}
+                                                    className={cn(
+                                                        "rounded-md px-2 py-1 text-[13px] transition-all duration-200",
+                                                        location.pathname === comp.href
+                                                            ? "bg-secondary/80 text-foreground font-medium"
+                                                            : "text-muted-foreground hover:text-foreground hover:bg-secondary/40"
+                                                    )}
+                                                >
+                                                    {comp.name}
+                                                </Link>
+                                            ))}
+                                        </div>
+                                    </div>
+                                );
+                            })}
+                        </div>
+                    </aside>
+                )}
 
                 {/* ─── Main content ─── */}
                 <main className="flex-1 min-w-0 px-4 sm:px-6 md:px-12 py-6 sm:py-10">
@@ -318,6 +301,6 @@ export default function Layout({
                     </footer>
                 </main>
             </div>
-        </div>
+        </div >
     );
 }

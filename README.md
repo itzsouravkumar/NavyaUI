@@ -1,62 +1,64 @@
-# ✨ NavyaUI
+# NavyaUI
 
-> **your website called. it wants to look hot.** 🔥
+NavyaUI is a curated collection of animated React components crafted to elevate your user interface. Built on the foundation of shadcn/ui and Framer Motion, it delivers drop-in, highly customizable elements designed for uncompromising aesthetic quality and seamless functionality.
 
-NavyaUI is a drop-in animated component library that makes your React sites go from *"meh"* to *"wait, you built that?!"* — built on top of **shadcn/ui** and **Framer Motion**.
+### Live Demo
 
-### 🪩 live demo → [navyaui.vercel.app](https://navyaui.vercel.app)
-
----
-
-## 💅 what's inside
-
-| component | vibe |
-|---|---|
-| 🔦 **Spotlight Card** | cursor-tracking radial glow — premium af |
-| 🌀 **Moving Border** | orbiting conic gradient border — hypnotic |
-| 🔤 **Flip Words** | spring-animated word cycling — *chef's kiss* |
-| ✍️ **Text Generate** | blur-to-sharp word reveal — cinematic |
-| 🃏 **3D Card** | perspective tilt with depth layers — immersive |
-| ⚡ **Background Beams** | animated SVG gradient beams — hero vibes |
-| ☄️ **Meteors** | shooting star particles — space energy |
-| 🎠 **Infinite Cards** | auto-scrolling testimonial carousel — social proof |
-| 🚀 **Floating Dock** | macOS-style magnifying dock — iconic |
+[navyaui.vercel.app](https://navyaui.vercel.app)
 
 ---
 
-## ⚡ quickstart
+## The Collection
+
+| Component | Aesthetic & Function |
+|-----------|----------------------|
+| **Spotlight Card** | Cursor-tracking radial glow for elevated focal points. |
+| **Moving Border** | Orbiting conic gradient borders with fluid motion. |
+| **Flip Words** | Spring-animated typography cycling for dynamic messaging. |
+| **Text Generate** | Cinematic blur-to-sharp word reveal sequences. |
+| **3D Card** | Immersive perspective tilt with layered depth rendering. |
+| **Background Beams** | Animated SVG gradient beams for high-impact hero sections. |
+| **Meteors** | Atmospheric shooting star particle simulations. |
+| **Infinite Cards** | Auto-scrolling, sleek carousel architectures. |
+| **Floating Dock** | Fluid, OS-level magnifying navigation interfaces. |
+
+---
+
+## Integration
+
+NavyaUI is engineered for zero-friction adoption into your existing React ecosystem.
+
+### Quick Start
+
+Initialize components universally via CLI, or integrate directly from the source to maintain total control over your design system.
 
 ```bash
 npx shadcn@latest add "@navya/spotlight-card"
 ```
 
-or just copy-paste from the docs. we don't judge. 🫡
+*Note: Comprehensive installation guides, dependency arrays, and configuration details are available in the [official documentation](https://navyaui.vercel.app).*
 
 ---
 
-## 🧬 the stack
+## Tech Stack
 
-- ⚛️ React + TypeScript
-- 🎨 Tailwind CSS
-- 🎬 Framer Motion
-- 🧩 shadcn/ui base
+Built with a highly optimized, modern web stack:
 
----
-
-## 🤝 contributing
-
-PRs are welcome. if you make something cool, we'll probably merge it while doing a happy dance. 💃
+- React & TypeScript
+- Tailwind CSS
+- Framer Motion
+- shadcn/ui ecosystem
 
 ---
 
-## 📜 license
+## License
 
-MIT — do whatever you want. seriously. go wild. 🦁
+Private Repository. All Rights Reserved.
 
 ---
 
 <p align="center">
-  made with ❤️ by <a href="https://sour4v.tech">sourav</a>
+  Crafted by <a href="https://sour4v.tech">Sourav</a>
   <br/>
-  <sub>if this saved you time, maybe <a href="https://buymeacoffee.com/itzsouravkumar">buy me a coffee</a>? ☕</sub>
+  <sub>If this library accelerated your workflow, consider <a href="https://buymeacoffee.com/itzsouravkumar">supporting the project</a>.</sub>
 </p>

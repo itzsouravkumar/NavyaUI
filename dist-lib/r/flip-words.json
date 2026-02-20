@@ -1,0 +1,16 @@
+{
+  "name": "flip-words",
+  "type": "registry:ui",
+  "dependencies": [
+    "framer-motion"
+  ],
+  "files": [
+    {
+      "path": "navyaui/FlipWords.tsx",
+      "content": "\"use client\";\nimport { useCallback, useEffect, useState } from \"react\";\nimport { AnimatePresence, motion } from \"framer-motion\";\n\nexport const FlipWords = ({\n    words,\n    duration = 3000,\n    className,\n}: {\n    words: string[];\n    duration?: number;\n    className?: string;\n}) => {\n    const [currentIndex, setCurrentIndex] = useState(0);\n    const [isAnimating, setIsAnimating] = useState(false);\n\n    const startAnimation = useCallback(() => {\n        setCurrentIndex((prev) => (prev + 1) % words.length);\n        setIsAnimating(true);\n    }, [words.length]);\n\n    useEffect(() => {\n        if (!isAnimating) {\n            const timer = setTimeout(startAnimation, duration);\n            return () => clearTimeout(timer);\n        }\n    }, [isAnimating, duration, startAnimation]);\n\n    return (\n        <span className=\"inline-block relative\" style={{ minWidth: \"120px\" }}>\n            <AnimatePresence mode=\"wait\" onExitComplete={() => setIsAnimating(false)}>\n                <motion.span\n                    key={words[currentIndex]}\n                    initial={{ opacity: 0, y: 20, filter: \"blur(8px)\" }}\n                    animate={{ opacity: 1, y: 0, filter: \"blur(0px)\" }}\n                    exit={{ opacity: 0, y: -20, filter: \"blur(8px)\" }}\n                    transition={{\n                        type: \"spring\",\n                        stiffness: 200,\n                        damping: 15,\n                        duration: 0.4,\n                    }}\n                    className={`inline-block whitespace-nowrap ${className || \"\"}`.trim()}\n                >\n                    {words[currentIndex]}\n                </motion.span>\n            </AnimatePresence>\n        </span>\n    );\n};\n",
+      "type": "registry:ui",
+      "target": "components/navyaui/FlipWords.tsx"
+    }
+  ],
+  "tailwind": {}
+}

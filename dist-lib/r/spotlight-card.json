@@ -1,0 +1,14 @@
+{
+  "name": "spotlight-card",
+  "type": "registry:ui",
+  "dependencies": [],
+  "files": [
+    {
+      "path": "navyaui/SpotlightCard.tsx",
+      "content": "\"use client\";\nimport React, { useRef, useState } from \"react\";\n\nexport const SpotlightCard = ({\n    children,\n    className,\n    spotlightColor = \"rgba(120, 119, 198, 0.15)\",\n}: {\n    children: React.ReactNode;\n    className?: string;\n    spotlightColor?: string;\n}) => {\n    const divRef = useRef<HTMLDivElement>(null);\n    const [position, setPosition] = useState({ x: 0, y: 0 });\n    const [opacity, setOpacity] = useState(0);\n\n    const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {\n        if (!divRef.current) return;\n        const rect = divRef.current.getBoundingClientRect();\n        setPosition({ x: e.clientX - rect.left, y: e.clientY - rect.top });\n    };\n\n    return (\n        <div\n            ref={divRef}\n            onMouseMove={handleMouseMove}\n            onMouseEnter={() => setOpacity(1)}\n            onMouseLeave={() => setOpacity(0)}\n            className={`relative overflow-hidden rounded-xl border border-border bg-card p-8 ${className || \"\"}`.trim()}\n        >\n            <div\n                className=\"pointer-events-none absolute -inset-px opacity-0 transition-opacity duration-500\"\n                style={{\n                    opacity,\n                    background: `radial-gradient(600px circle at ${position.x}px ${position.y}px, ${spotlightColor}, transparent 40%)`,\n                }}\n            />\n            {children}\n        </div>\n    );\n};\n",
+      "type": "registry:ui",
+      "target": "components/navyaui/SpotlightCard.tsx"
+    }
+  ],
+  "tailwind": {}
+}

@@ -55,7 +55,6 @@ const allComponents = [
     { name: "Floating Dock", href: "/components/floating-dock", desc: "macOS-style dock", icon: <Navigation className="w-4 h-4" /> },
 ];
 
-// Reusable scroll-reveal wrapper
 function ScrollReveal({
     children,
     className,
@@ -110,12 +109,16 @@ export default function Home() {
     const heroOpacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
 
     return (
-        <div className="max-w-5xl mx-auto">
+        <div className="w-full relative">
+            {/* Absolute premium background glow for home page */}
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-blue-500/10 dark:bg-blue-500/5 blur-[120px] rounded-full pointer-events-none -z-10" />
+            <div className="absolute top-20 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-purple-500/10 dark:bg-purple-500/5 blur-[100px] rounded-full pointer-events-none -z-10" />
+
             {/* ─── Hero with parallax fade ─── */}
             <motion.div
                 ref={heroRef}
                 style={{ y: heroY, opacity: heroOpacity }}
-                className="py-10 sm:py-16 md:py-24"
+                className="py-16 sm:py-24 md:py-32 flex flex-col items-center justify-center text-center"
             >
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -132,11 +135,10 @@ export default function Home() {
                     initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
                     animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                     transition={{ duration: 0.7, delay: 0.15, ease: [0.25, 0.4, 0.25, 1] }}
-                    className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.2] overflow-visible"
+                    className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.2] max-w-4xl"
                 >
-                    <span className="text-foreground block">Make your websites</span>
-                    <span className="text-foreground block mt-2">
-                        look{" "}
+                    <span className="text-foreground block mb-1">Make your websites look</span>
+                    <span className="text-foreground block h-[1.3em]">
                         <FlipWords words={["10x better", "stunning", "premium", "alive"]} />
                     </span>
                 </motion.h1>
@@ -145,7 +147,7 @@ export default function Home() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.35 }}
-                    className="mt-4 sm:mt-6 text-sm sm:text-base md:text-lg text-muted-foreground max-w-xl leading-relaxed"
+                    className="mt-6 sm:mt-8 text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl leading-relaxed font-medium"
                 >
                     Copy paste the most trending animated components and use them in your
                     websites without having to worry about styling and animations.
@@ -155,19 +157,19 @@ export default function Home() {
                     initial={{ opacity: 0, y: 15 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.5 }}
-                    className="mt-8 flex gap-3"
+                    className="mt-10 flex gap-4"
                 >
                     <Link to="/components/spotlight-card">
                         <button
-                            className="h-10 sm:h-11 px-5 sm:px-6 rounded-xl text-xs sm:text-sm font-medium inline-flex items-center gap-2 transition-all duration-300 hover:scale-[1.03] active:scale-[0.98]"
+                            className="h-12 sm:h-14 px-8 sm:px-10 rounded-2xl text-sm sm:text-base font-semibold inline-flex items-center gap-2 transition-all duration-300 hover:scale-[1.03] active:scale-[0.98]"
                             style={{
                                 background: "linear-gradient(135deg, #e8e8e8 0%, #999 30%, #333 70%, #111 100%)",
                                 color: "#fff",
-                                boxShadow: "0 2px 15px rgba(255,255,255,0.05), inset 0 1px 0 rgba(255,255,255,0.2)",
+                                boxShadow: "0 10px 30px -10px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.2), 0 0 20px 0 rgba(255,255,255,0.1)",
                             }}
                         >
                             Browse Components
-                            <ArrowRight className="w-4 h-4" />
+                            <ArrowRight className="w-5 h-5 ml-1" />
                         </button>
                     </Link>
                 </motion.div>
@@ -175,16 +177,16 @@ export default function Home() {
 
             {/* ─── Featured Bento Grid ─── */}
             <ScrollReveal direction="scale">
-                <div className="mb-16">
-                    <div className="flex items-center gap-2 mb-6">
+                <div className="mb-20 max-w-5xl mx-auto">
+                    <div className="flex flex-col items-center justify-center text-center gap-2 mb-10">
                         <motion.div
                             initial={{ width: 0 }}
-                            whileInView={{ width: 32 }}
+                            whileInView={{ width: 48 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.5, delay: 0.2 }}
-                            className="h-px bg-gradient-to-r from-foreground/50 to-transparent"
+                            className="h-1 rounded-full bg-foreground mb-2"
                         />
-                        <h2 className="text-lg font-semibold text-foreground">Featured</h2>
+                        <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground">Featured Masterpieces</h2>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-px rounded-2xl overflow-hidden border border-border/20 bg-border/10">
@@ -213,17 +215,17 @@ export default function Home() {
             </ScrollReveal>
 
             {/* ─── All Components ─── */}
-            <div className="mb-12 sm:mb-20">
+            <div className="mb-16 sm:mb-24 max-w-5xl mx-auto">
                 <ScrollReveal>
-                    <div className="flex items-center gap-2 mb-6">
+                    <div className="flex flex-col items-center justify-center text-center gap-2 mb-10">
                         <motion.div
                             initial={{ width: 0 }}
-                            whileInView={{ width: 32 }}
+                            whileInView={{ width: 48 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.5, delay: 0.2 }}
-                            className="h-px bg-gradient-to-r from-foreground/50 to-transparent"
+                            className="h-1 rounded-full bg-foreground mb-2"
                         />
-                        <h2 className="text-lg font-semibold text-foreground">All Components</h2>
+                        <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground">All Components</h2>
                     </div>
                 </ScrollReveal>
 
@@ -259,18 +261,18 @@ export default function Home() {
 
             {/* ─── Quick Start ─── */}
             <ScrollReveal direction="scale">
-                <div className="mb-12 sm:mb-20">
-                    <div className="flex items-center gap-2 mb-4">
+                <div className="mb-16 sm:mb-24 max-w-3xl mx-auto">
+                    <div className="flex flex-col items-center justify-center text-center gap-2 mb-6">
                         <motion.div
                             initial={{ width: 0 }}
-                            whileInView={{ width: 32 }}
+                            whileInView={{ width: 48 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.5, delay: 0.2 }}
-                            className="h-px bg-gradient-to-r from-foreground/50 to-transparent"
+                            className="h-1 rounded-full bg-foreground mb-2"
                         />
-                        <h2 className="text-lg font-semibold text-foreground">Quick Start</h2>
+                        <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground">Quick Start</h2>
                     </div>
-                    <p className="text-sm text-muted-foreground mb-6">
+                    <p className="text-sm text-muted-foreground mb-6 text-center">
                         Install NavyaUI and start using premium animated components in your React project.
                     </p>
                     <div className="space-y-4">
