@@ -53,7 +53,7 @@ Built with a highly optimized, modern web stack:
 
 ## License
 
-Private Repository. All Rights Reserved.
+Feel Free to contribute.
 
 ---
 
