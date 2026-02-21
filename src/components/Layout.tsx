@@ -1,6 +1,6 @@
 import { useEffect, useRef, useCallback } from "react";
 import { Outlet, Link, useLocation, useNavigate } from "react-router-dom";
-import { Moon, Sun, Menu, X, Search, Command, Github, Heart, Coffee } from "lucide-react";
+import { Moon, Sun, Menu, X, Search, Command, Github, Heart } from "lucide-react";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 
@@ -162,15 +162,7 @@ export default function Layout({
                         >
                             <Github className="h-4 w-4 text-foreground" />
                         </a>
-                        <a
-                            href="https://buymeacoffee.com/itzsouravkumar"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="hidden sm:inline-flex items-center justify-center rounded-xl w-10 h-10 hover:bg-secondary/80 transition-all duration-200 border border-border/50"
-                            aria-label="Buy me a Coffee"
-                        >
-                            <Coffee className="h-4 w-4 text-foreground" />
-                        </a>
+
                         <button
                             onClick={toggleTheme}
                             className="inline-flex items-center justify-center rounded-xl w-10 h-10 hover:bg-secondary/80 transition-all duration-200 border border-border/50"
