@@ -15,6 +15,7 @@ const components = [
     { name: "Fluid Smoke Background", href: "/components/fluid-smoke-background", tag: "Backgrounds" },
     { name: "Infinite Moving Cards", href: "/components/infinite-moving-cards", tag: "Layout" },
     { name: "Floating Dock", href: "/components/floating-dock", tag: "Navigation" },
+    { name: "3D Expandable Button", href: "/components/3d-expandable-button", tag: "Buttons" },
 ];
 
 export default function Layout({
@@ -83,7 +84,7 @@ export default function Layout({
         setSearchQuery("");
     };
 
-    const categories = ["Cards", "Text", "Effects", "Backgrounds", "Layout", "Navigation"];
+    const categories = ["Buttons", "Cards", "Text", "Effects", "Backgrounds", "Layout", "Navigation"];
 
     return (
         <div className="min-h-screen bg-background text-foreground font-['Poppins']">

@@ -13,6 +13,25 @@ export const FluidSmokeBackground: React.FC<FluidSmokeBackgroundProps> = ({
     config = {}
 }) => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
+    const [isDark, setIsDark] = React.useState(() => {
+        if (typeof window !== "undefined") {
+            return document.documentElement.classList.contains("dark");
+        }
+        return true;
+    });
+
+    useEffect(() => {
+        const observer = new MutationObserver(() => {
+            setIsDark(document.documentElement.classList.contains("dark"));
+        });
+
+        observer.observe(document.documentElement, {
+            attributes: true,
+            attributeFilter: ["class"],
+        });
+
+        return () => observer.disconnect();
+    }, []);
 
     useEffect(() => {
         if (!canvasRef.current) return;
@@ -35,17 +54,17 @@ export const FluidSmokeBackground: React.FC<FluidSmokeBackgroundProps> = ({
             COLORFUL: true,
             COLOR_UPDATE_SPEED: 10,
             PAUSED: false,
-            BACK_COLOR: { r: 2, g: 2, b: 2 },
-            TRANSPARENT: false,
+            BACK_COLOR: isDark ? { r: 2, g: 2, b: 2 } : { r: 250, g: 250, b: 250 },
+            TRANSPARENT: !isDark,
             BLOOM: true,
             BLOOM_ITERATIONS: 8,
             BLOOM_RESOLUTION: 256,
-            BLOOM_INTENSITY: 0.8,
-            BLOOM_THRESHOLD: 0.6,
+            BLOOM_INTENSITY: isDark ? 0.8 : 0.1,
+            BLOOM_THRESHOLD: isDark ? 0.6 : 0.9,
             BLOOM_SOFT_KNEE: 0.7,
             SUNRAYS: true,
             SUNRAYS_RESOLUTION: 196,
-            SUNRAYS_WEIGHT: 1.0,
+            SUNRAYS_WEIGHT: isDark ? 1.0 : 0.4,
             ...config
         };
 
@@ -58,12 +77,12 @@ export const FluidSmokeBackground: React.FC<FluidSmokeBackgroundProps> = ({
         });
         canvasRef.current.dispatchEvent(event);
 
-    }, [config]);
+    }, [config, isDark]);
 
     return (
         <canvas
             ref={canvasRef}
-            className={cn("w-full h-full block bg-[#020202]", className)}
+            className={cn("w-full h-full block dark:bg-[#020202] bg-zinc-50", className)}
             style={{
                 width: "100%",
                 height: "100%",
