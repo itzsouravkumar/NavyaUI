@@ -53,6 +53,7 @@ const allComponents = [
     { name: "Meteors", href: "/components/meteors", desc: "Shooting star particles", icon: <Stars className="w-4 h-4" /> },
     { name: "Infinite Cards", href: "/components/infinite-moving-cards", desc: "Auto-scroll carousel", icon: <LayoutGrid className="w-4 h-4" /> },
     { name: "Floating Dock", href: "/components/floating-dock", desc: "macOS-style dock", icon: <Navigation className="w-4 h-4" /> },
+    { name: "Wave Ribbon Background", href: "/components/wave-ribbon-background", desc: "Smooth synced wave ribbons", icon: <Zap className="w-4 h-4" /> },
 ];
 
 function ScrollReveal({
@@ -157,7 +158,7 @@ export default function Home() {
                     initial={{ opacity: 0, y: 15 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.5 }}
-                    className="mt-10 flex gap-4"
+                    className="mt-10 flex flex-wrap items-center justify-center gap-4"
                 >
                     <Link to="/components/spotlight-card">
                         <button
@@ -169,6 +170,12 @@ export default function Home() {
                             }}
                         >
                             Browse Components
+                            <ArrowRight className="w-5 h-5 ml-1" />
+                        </button>
+                    </Link>
+                    <Link to="/getting-started">
+                        <button className="h-12 sm:h-14 px-8 sm:px-10 rounded-2xl text-sm sm:text-base font-semibold inline-flex items-center gap-2 border border-border/40 bg-secondary/45 text-foreground hover:bg-secondary/70 transition-all duration-300 hover:scale-[1.03] active:scale-[0.98]">
+                            Get Started
                             <ArrowRight className="w-5 h-5 ml-1" />
                         </button>
                     </Link>

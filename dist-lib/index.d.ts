@@ -9,3 +9,4 @@ export { MovingBorder } from './components/navyaui/MovingBorder';
 export { SpotlightCard } from './components/navyaui/SpotlightCard';
 export { TextGenerateEffect } from './components/navyaui/TextGenerateEffect';
 export { CardContainer, CardBody, CardItem } from './components/navyaui/ThreeDCard';
+export { WaveRibbonBackground } from './components/navyaui/WaveRibbonBackground';

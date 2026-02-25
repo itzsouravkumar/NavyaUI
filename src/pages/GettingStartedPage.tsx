@@ -14,13 +14,13 @@ const steps = [
         number: "02",
         icon: <Terminal className="w-5 h-5" />,
         title: "Initialization",
-        description: "Initialize NavyaUI in your project using the CLI.",
+        description: "Initialize shadcn in your project using the CLI.",
     },
     {
         number: "03",
         icon: <Puzzle className="w-5 h-5" />,
-        title: "Client Setup",
-        description: "Configure for your AI assistant (e.g., Cursor, Copilot).",
+        title: "AI Setup (Optional)",
+        description: "Configure MCP for your AI assistant (e.g., Cursor, Copilot).",
     },
 ];
 
@@ -29,7 +29,7 @@ export default function GettingStartedPage() {
         <div className="max-w-4xl">
             <PageHeader
                 title="Getting Started"
-                description="Set up NavyaUI in your project in under 2 minutes. Works with shadcn/ui, Framer Motion, and your favourite AI assistant."
+                description="Set up NavyaUI in your project in under 2 minutes. Works with shadcn/ui, Framer Motion, and optionally with your favourite AI assistant."
             />
 
             {/* Steps overview */}
@@ -82,10 +82,10 @@ export default function GettingStartedPage() {
                     <h2 className="text-xl font-bold text-foreground">Initialization</h2>
                 </div>
                 <p className="text-sm text-muted-foreground mb-4">
-                    Add the MCP server to your project:
+                    Initialize shadcn in your project (required once):
                 </p>
                 <CodeBlock
-                    code="npx shadcn@latest mcp init"
+                    code="npx shadcn@latest init"
                     language="bash"
                     filename="Terminal"
                 />
@@ -95,10 +95,10 @@ export default function GettingStartedPage() {
             <SlideInSection direction="right" className="mb-10">
                 <div className="flex items-center gap-3 mb-4">
                     <div className="flex items-center justify-center w-7 h-7 rounded-lg bg-foreground text-background text-xs font-bold">3</div>
-                    <h2 className="text-xl font-bold text-foreground">Client Setup</h2>
+                    <h2 className="text-xl font-bold text-foreground">AI Client Setup (Optional)</h2>
                 </div>
                 <p className="text-sm text-muted-foreground mb-4">
-                    Configure for your AI assistant (e.g., Cursor):
+                    Configure MCP for your AI assistant (optional):
                 </p>
                 <CodeBlock
                     code="npx shadcn@latest mcp init --client cursor"
@@ -123,7 +123,7 @@ export default function GettingStartedPage() {
                         filename="Terminal"
                     />
                     <CodeBlock
-                        code="npx shadcn@latest add @navya/moving-border @navya/flip-words @navya/meteors"
+                        code="npx shadcn@latest add @navya/moving-border @navya/flip-words @navya/meteor-background"
                         language="bash"
                         filename="Terminal — add multiple"
                     />
@@ -176,7 +176,7 @@ export default function Hero() {
                             "text-generate-effect",
                             "3d-card",
                             "background-beams",
-                            "meteors",
+                            "meteor-background",
                             "infinite-moving-cards",
                             "floating-dock",
                         ].map((name, idx) => (

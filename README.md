@@ -10,17 +10,17 @@ NavyaUI is a curated collection of animated React components crafted to elevate 
 
 ## The Collection
 
-| Component | Aesthetic & Function |
-|-----------|----------------------|
-| **Spotlight Card** | Cursor-tracking radial glow for elevated focal points. |
-| **Moving Border** | Orbiting conic gradient borders with fluid motion. |
-| **Flip Words** | Spring-animated typography cycling for dynamic messaging. |
-| **Text Generate** | Cinematic blur-to-sharp word reveal sequences. |
-| **3D Card** | Immersive perspective tilt with layered depth rendering. |
+| Component            | Aesthetic & Function                                       |
+| -------------------- | ---------------------------------------------------------- |
+| **Spotlight Card**   | Cursor-tracking radial glow for elevated focal points.     |
+| **Moving Border**    | Orbiting conic gradient borders with fluid motion.         |
+| **Flip Words**       | Spring-animated typography cycling for dynamic messaging.  |
+| **Text Generate**    | Cinematic blur-to-sharp word reveal sequences.             |
+| **3D Card**          | Immersive perspective tilt with layered depth rendering.   |
 | **Background Beams** | Animated SVG gradient beams for high-impact hero sections. |
-| **Meteors** | Atmospheric shooting star particle simulations. |
-| **Infinite Cards** | Auto-scrolling, sleek carousel architectures. |
-| **Floating Dock** | Fluid, OS-level magnifying navigation interfaces. |
+| **Meteors**          | Atmospheric shooting star particle simulations.            |
+| **Infinite Cards**   | Auto-scrolling, sleek carousel architectures.              |
+| **Floating Dock**    | Fluid, OS-level magnifying navigation interfaces.          |
 
 ---
 
@@ -33,10 +33,23 @@ NavyaUI is engineered for zero-friction adoption into your existing React ecosys
 Initialize components universally via CLI, or integrate directly from the source to maintain total control over your design system.
 
 ```bash
+npm install navyaui
+```
+
+```bash
+# Add this to components.json
+# "registries": { "@navya": "https://navyaui.vercel.app/r/{name}.json" }
+
+npx shadcn@latest init
 npx shadcn@latest add "@navya/spotlight-card"
 ```
 
-*Note: Comprehensive installation guides, dependency arrays, and configuration details are available in the [official documentation](https://navyaui.vercel.app).*
+```bash
+# Optional: MCP setup for AI clients
+npx shadcn@latest mcp init --client cursor
+```
+
+_Note: Comprehensive installation guides, dependency arrays, and configuration details are available in the [official documentation](https://navyaui.vercel.app)._
 
 ---
 

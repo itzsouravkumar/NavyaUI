@@ -13,6 +13,7 @@ import InfiniteMovingCardsPage from "./pages/components/InfiniteMovingCardsPage"
 import FloatingDockPage from "./pages/components/FloatingDockPage";
 import FluidSmokeBackgroundPage from "./pages/components/FluidSmokeBackgroundPage";
 import ThreeDExpandableButtonPage from "./pages/components/ThreeDExpandableButtonPage";
+import WaveRibbonBackgroundPage from "./pages/components/WaveRibbonBackgroundPage";
 import GettingStartedPage from "./pages/GettingStartedPage";
 
 function App() {
@@ -43,6 +44,7 @@ function App() {
         <Route path="components/infinite-moving-cards" element={<InfiniteMovingCardsPage />} />
         <Route path="components/floating-dock" element={<FloatingDockPage />} />
         <Route path="components/fluid-smoke-background" element={<FluidSmokeBackgroundPage />} />
+        <Route path="components/wave-ribbon-background" element={<WaveRibbonBackgroundPage />} />
         <Route path="components/3d-expandable-button" element={<ThreeDExpandableButtonPage />} />
       </Route>
     </Routes>
