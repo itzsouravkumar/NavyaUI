@@ -7,6 +7,7 @@ export { FlipWords } from "./components/navyaui/FlipWords";
 export { FloatingDock } from "./components/navyaui/FloatingDock";
 export { FluidSmokeBackground } from "./components/navyaui/FluidSmokeBackground";
 export { InfiniteMovingCards } from "./components/navyaui/InfiniteMovingCards";
+export { LiquidGlassButton } from "./components/navyaui/LiquidGlassButton";
 export { MeteorBackground as Meteors } from "./components/navyaui/MeteorBackground";
 export { MovingBorder } from "./components/navyaui/MovingBorder";
 export { SpotlightCard } from "./components/navyaui/SpotlightCard";

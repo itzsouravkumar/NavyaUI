@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { FlipWords } from "@/components/navyaui/FlipWords";
-import { ArrowRight, Sparkles, Zap, Box, MousePointer2, Type, Stars, Navigation, LayoutGrid } from "lucide-react";
+import { ArrowRight, Sparkles, Zap, Box, MousePointer2, Type, Stars, Navigation, LayoutGrid, Droplets } from "lucide-react";
 import CodeBlock from "@/components/CodeBlock";
 
 const featured = [
@@ -54,6 +54,7 @@ const allComponents = [
     { name: "Infinite Cards", href: "/components/infinite-moving-cards", desc: "Auto-scroll carousel", icon: <LayoutGrid className="w-4 h-4" /> },
     { name: "Floating Dock", href: "/components/floating-dock", desc: "macOS-style dock", icon: <Navigation className="w-4 h-4" /> },
     { name: "Wave Ribbon Background", href: "/components/wave-ribbon-background", desc: "Smooth synced wave ribbons", icon: <Zap className="w-4 h-4" /> },
+    { name: "Liquid Glass Button", href: "/components/liquid-glass-button", desc: "Pure fluid glass CTA", icon: <Droplets className="w-4 h-4" /> },
 ];
 
 function ScrollReveal({

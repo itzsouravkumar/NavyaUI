@@ -179,6 +179,7 @@ export default function Hero() {
                             "meteor-background",
                             "infinite-moving-cards",
                             "floating-dock",
+                            "liquid-glass-button",
                         ].map((name, idx) => (
                             <motion.div
                                 key={name}

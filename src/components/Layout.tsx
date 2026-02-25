@@ -17,6 +17,7 @@ const components = [
     { name: "Infinite Moving Cards", href: "/components/infinite-moving-cards", tag: "Layout" },
     { name: "Floating Dock", href: "/components/floating-dock", tag: "Navigation" },
     { name: "3D Expandable Button", href: "/components/3d-expandable-button", tag: "Buttons" },
+    { name: "Liquid Glass Button", href: "/components/liquid-glass-button", tag: "Buttons" },
 ];
 
 export default function Layout({
@@ -156,7 +157,7 @@ export default function Layout({
                     {/* Right: theme + actions */}
                     <div className="flex items-center gap-3">
                         <a
-                            href="https://github.com/itzsouravkumar"
+                            href="https://github.com/itzsouravkumar/NavyaUI"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="hidden sm:inline-flex items-center justify-center rounded-xl w-10 h-10 hover:bg-secondary/80 transition-all duration-200 border border-border/50"

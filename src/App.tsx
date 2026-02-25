@@ -14,6 +14,7 @@ import FloatingDockPage from "./pages/components/FloatingDockPage";
 import FluidSmokeBackgroundPage from "./pages/components/FluidSmokeBackgroundPage";
 import ThreeDExpandableButtonPage from "./pages/components/ThreeDExpandableButtonPage";
 import WaveRibbonBackgroundPage from "./pages/components/WaveRibbonBackgroundPage";
+import LiquidGlassButtonPage from "./pages/components/LiquidGlassButtonPage";
 import GettingStartedPage from "./pages/GettingStartedPage";
 
 function App() {
@@ -46,6 +47,7 @@ function App() {
         <Route path="components/fluid-smoke-background" element={<FluidSmokeBackgroundPage />} />
         <Route path="components/wave-ribbon-background" element={<WaveRibbonBackgroundPage />} />
         <Route path="components/3d-expandable-button" element={<ThreeDExpandableButtonPage />} />
+        <Route path="components/liquid-glass-button" element={<LiquidGlassButtonPage />} />
       </Route>
     </Routes>
   );
