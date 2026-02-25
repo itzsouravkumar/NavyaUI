@@ -1,6 +1,6 @@
 {
   "name": "navyaui",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Premium animated UI components built with React and Tailwind CSS.",
   "type": "module",
   "main": "dist-lib/navyaui.cjs",
